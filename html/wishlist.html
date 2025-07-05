@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wishlist - Collegify+</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+    </style>
+</head>
+<body class="flex h-screen">
+
+    <!-- Vertical Sidebar -->
+    <aside class="w-64 bg-white text-gray-800 flex flex-col p-4 border-r border-gray-200">
+
+        <!-- Company Name -->
+        <div class="mb-8">
+            <a href="index.html" class="text-2xl font-bold text-gray-900">Collegify+</a>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="mb-6 relative">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+            </span>
+            <input type="text" placeholder="Search..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="flex-grow">
+             <ul>
+                <li class="mb-2">
+                    <a href="dashboard.html" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100">
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                        </svg>
+                        <span class="ml-3">Home</span>
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a href="categories.html" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100">
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                        <span class="ml-3">Categories</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <!-- Bottom Section -->
+        <div class="mt-auto">
+             <ul>
+                <li class="mb-2">
+                    <a href="cart.html" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100">
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                        <span class="ml-3 flex-1">Cart</span>
+                        <span id="cart-count-badge" class="inline-block py-0.5 px-2 text-xs font-semibold text-indigo-600 bg-indigo-100 rounded-full">0</span>
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a href="wishlist.html" class="flex items-center p-2 text-base font-normal text-white bg-indigo-600 rounded-lg">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                        <span class="ml-3 flex-1">Wishlist</span>
+                        <span id="wishlist-count-badge" class="inline-block py-0.5 px-2 text-xs font-semibold text-indigo-600 bg-indigo-100 rounded-full">0</span>
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a href="#" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100">
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span class="ml-3">Tutorial</span>
+                    </a>
+                </li>
+                <li class="mb-2 relative">
+                    <button id="settings-btn" class="w-full flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100">
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.096 2.572-1.065z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        <span class="ml-3">Settings</span>
+                    </button>
+                    <div id="settings-menu" class="hidden absolute bottom-full left-0 mb-2 min-w-[200px] bg-white border border-gray-200 rounded-lg shadow-lg z-10">
+                        <a href="notifications.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Notifications</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Password Reset</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Terms & Conditions</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- User Profile / Accessibility Footer -->
+        <div class="border-t border-gray-200 mt-4 pt-4">
+            <div class="flex items-center w-full text-left">
+                <a href="profile.html" class="flex-grow flex items-center p-2 rounded-lg hover:bg-gray-100">
+                    <span class="inline-block h-8 w-8 rounded-full overflow-hidden bg-gray-100">
+                        <svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 20.993V24H0v-2.997A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </span>
+                    <span class="ml-3 font-medium text-gray-800">Student</span>
+                </a>
+                <div class="relative">
+                    <button id="user-menu-btn" class="p-2 rounded-lg hover:bg-gray-100">
+                        <svg class="w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+                        </svg>
+                    </button>
+                    <div id="accessibility-menu" class="hidden absolute bottom-full right-0 mb-2 min-w-[220px] bg-white border border-gray-200 rounded-lg shadow-lg z-10">
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Display and text size</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Reader mode</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Audio description</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Zoom</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Translate</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-grow p-10 overflow-y-auto">
+        <h1 class="text-3xl font-bold text-gray-900 mb-6">My Wishlist</h1>
+        <div id="wishlist-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        <div id="empty-wishlist" class="hidden text-center py-16">
+            <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+            </svg>
+            <h3 class="mt-2 text-sm font-medium text-gray-900">Your wishlist is empty</h3>
+            <p class="mt-1 text-sm text-gray-500">Start adding items you want to save for later.</p>
+            <div class="mt-6">
+              <a href="products.html" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
+                Browse products</a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // --- DATA & LOCAL STORAGE ---
+        function getWishlist() {
+            return JSON.parse(localStorage.getItem('campusWishlist')) || [];
+        }
+
+        function saveWishlist(wishlist) {
+            localStorage.setItem('campusWishlist', JSON.stringify(wishlist));
+            updateWishlistBadge();
+        }
+
+        function getCart() {
+            return JSON.parse(localStorage.getItem('campusCart')) || [];
+        }
+
+        function updateBadge(id, getItems, reduceFn) {
+            const badge = document.getElementById(id);
+            if (badge) {
+                const items = getItems();
+                const count = items.reduce(reduceFn, 0);
+                badge.textContent = count;
+                badge.classList.toggle('hidden', count === 0);
+            }
+        }
+        
+        function updateCartBadge() { updateBadge('cart-count-badge', getCart, (sum, item) => sum + item.quantity); }
+        function updateWishlistBadge() { updateBadge('wishlist-count-badge', getWishlist, (sum, item) => sum + 1); }
+
+        function renderWishlist() {
+            const wishlistItems = getWishlist();
+            const wishlistGrid = document.getElementById('wishlist-grid');
+            const emptyWishlistMessage = document.getElementById('empty-wishlist');
+            wishlistGrid.innerHTML = '';
+
+            if (wishlistItems.length > 0) {
+                emptyWishlistMessage.classList.add('hidden');
+                wishlistItems.forEach((item, index) => {
+                    const itemEl = document.createElement('div');
+                    itemEl.className = 'bg-white p-4 rounded-lg shadow-sm border flex items-start space-x-4';
+                    itemEl.innerHTML = `
+                        <a href="product-details.html?id=${item.id}">
+                            <img src="${item.imageUrl}" alt="${item.name}" class="w-24 h-24 object-cover rounded-md">
+                        </a>
+                        <div class="flex-grow">
+                            <a href="product-details.html?id=${item.id}" class="font-semibold text-gray-800 hover:text-indigo-600">${item.name}</a>
+                            <p class="text-indigo-600 font-bold text-lg mt-1">$${item.price.toFixed(2)}</p>
+                            <p class="text-sm text-gray-500">Sold by ${item.seller}</p>
+                        </div>
+                        <button data-index="${index}" class="remove-btn text-gray-400 hover:text-red-500" title="Remove from wishlist">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 012 0v6a1 1 0 11-2 0V8z" clip-rule="evenodd"></path></svg>
+                        </button>
+                    `;
+                    wishlistGrid.appendChild(itemEl);
+                });
+            } else {
+                emptyWishlistMessage.classList.remove('hidden');
+            }
+
+            // Add event listeners to new remove buttons
+            document.querySelectorAll('.remove-btn').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const indexToRemove = parseInt(event.currentTarget.getAttribute('data-index'));
+                    let wishlist = getWishlist();
+                    wishlist.splice(indexToRemove, 1);
+                    saveWishlist(wishlist);
+                    renderWishlist(); // Re-render the wishlist
+                });
+            });
+        }
+        
+        // --- PAGE INITIALIZATION & EVENT LISTENERS ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const settingsBtn = document.getElementById('settings-btn');
+            const settingsMenu = document.getElementById('settings-menu');
+            const userMenuBtn = document.getElementById('user-menu-btn');
+            const accessibilityMenu = document.getElementById('accessibility-menu');
+
+            if (settingsBtn) {
+                settingsBtn.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    settingsMenu.classList.toggle('hidden');
+                });
+            }
+
+            if (userMenuBtn) {
+                userMenuBtn.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    accessibilityMenu.classList.toggle('hidden');
+                });
+            }
+
+            renderWishlist();
+            updateCartBadge();
+            updateWishlistBadge();
+        });
+
+        window.addEventListener('click', (event) => {
+            const settingsMenu = document.getElementById('settings-menu');
+            const accessibilityMenu = document.getElementById('accessibility-menu');
+            
+            if (settingsMenu && !settingsMenu.classList.contains('hidden') && !document.getElementById('settings-btn').contains(event.target)) {
+                settingsMenu.classList.add('hidden');
+            }
+
+            if (accessibilityMenu && !accessibilityMenu.classList.contains('hidden') && !document.getElementById('user-menu-btn').contains(event.target)) {
+                 accessibilityMenu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

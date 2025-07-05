@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Collegify+</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Firebase SDKs -->
+<!-- Firebase Compat SDKs (supports firebase.auth() style) -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+
+<script>
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_DOMAIN",
+    databaseURL: "YOUR_DB_URL",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_BUCKET",
+    messagingSenderId: "YOUR_MSG_ID",
+    appId: "YOUR_APP_ID"
+  };
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+    </style>
+</head>
+
+<body class="flex h-screen">
+
+    <!-- Vertical Sidebar -->
+    <aside class="w-64 bg-white text-gray-800 flex flex-col p-4 border-r border-gray-200">
+
+        <!-- Company Name -->
+        <div class="mb-8">
+            <a href="index.html" class="text-2xl font-bold text-gray-900">Collegify+</a>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="mb-6">
+            <div class="relative">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </span>
+                <input type="text" placeholder="Search..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+            </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="flex-grow">
+            <ul>
+                <li class="mb-2">
+                    <a href="dashboard.html" class="flex items-center p-2 text-base font-normal text-white bg-indigo-600 rounded-lg">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                        </svg>
+                        <span class="ml-3">Home</span>
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a href="categories.html" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100">
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                        <span class="ml-3">Categories</span>
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a href="orders.html" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100">
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                        </svg>
+                        <span class="ml-3">My Orders</span>
+                    </a>
+                </li>
+                 <li class="mb-2">
+                    <a href="messages.html" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100">
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                        </svg>
+                        <span class="ml-3">Messages</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Bottom Section -->
+        <div class="mt-auto">
+            <ul>
+                <li class="mb-2">
+                    <a href="cart.html" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100">
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                        <span class="ml-3 flex-1">Cart</span>
+                        <span id="cart-count-badge" class="inline-block py-0.5 px-2 text-xs font-semibold text-indigo-600 bg-indigo-100 rounded-full">0</span>
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a href="wishlist.html" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100">
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                        <span class="ml-3 flex-1">Wishlist</span>
+                        <span id="wishlist-count-badge" class="inline-block py-0.5 px-2 text-xs font-semibold text-pink-600 bg-pink-100 rounded-full">0</span>
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a href="#" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100">
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span class="ml-3">Tutorial</span>
+                    </a>
+                </li>
+                <li class="mb-2 relative">
+                    <button id="settings-btn" class="w-full flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100">
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.096 2.572-1.065z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        <span class="ml-3">Settings</span>
+                    </button>
+                    <div id="settings-menu" class="hidden absolute bottom-full left-0 mb-2 min-w-[200px] bg-white border border-gray-200 rounded-lg shadow-lg z-10">
+                        <a href="notifications.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Notifications</a>
+                        <a href="/html/terms.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Terms & Conditions</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- User Profile / Accessibility -->
+        <div class="border-t border-gray-200 mt-4 pt-4">
+            <div class="flex items-center w-full text-left">
+                <a href="profile.html" class="flex-grow flex items-center p-2 rounded-lg hover:bg-gray-100">
+                    <span class="inline-block h-8 w-8 rounded-full overflow-hidden bg-gray-100">
+                        <svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 20.993V24H0v-2.997A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </span>
+                    <span id="user-name" class="ml-3 font-medium text-gray-800">student</span>
+
+                </a>
+                <div class="relative">
+                    <button id="user-menu-btn" class="p-2 rounded-lg hover:bg-gray-100">
+                        <svg class="w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                          <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+                        </svg>
+                    </button>
+                    <div id="accessibility-menu" class="hidden absolute bottom-full right-0 mb-2 min-w-[220px] bg-white border border-gray-200 rounded-lg shadow-lg z-10">
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Display and text size</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Reader mode</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Audio description</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Zoom</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Translate</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-grow p-10 overflow-y-auto">
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-3xl font-bold text-gray-900">Welcome back, Student!</h1>
+            <div>
+                <label for="background-upload" class="cursor-pointer inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    Change Background
+                </label>
+                <input type="file" id="background-upload" class="hidden" accept="image/*">
+            </div>
+        </div>
+        
+        <!-- Background Container -->
+        <div id="dashboard-background-container" class="relative rounded-lg bg-cover bg-center transition-all duration-500" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80');">
+            
+            <!-- Overlay for readability -->
+            <div class="absolute inset-0 bg-white/75 backdrop-blur-sm rounded-lg"></div>
+            
+            <!-- Dashboard Content Grid -->
+            <div class="relative grid grid-cols-1 lg:grid-cols-3 gap-8 p-8">
+                
+                <!-- Main Column -->
+                <div class="lg:col-span-2 space-y-8">
+                    
+                    <!-- Recent Wishlist Items -->
+                    <div class="bg-white/90 p-6 rounded-lg shadow-sm border">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-xl font-semibold text-gray-800">Your Wishlist</h2>
+                            <a href="wishlist.html" class="text-sm font-medium text-indigo-600 hover:text-indigo-800">View All &rarr;</a>
+                        </div>
+                        <div id="wishlist-preview" class="space-y-4">
+                           <p id="empty-wishlist-preview" class="text-gray-500">Your wishlist is empty.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Orders -->
+                    <div class="bg-white/90 p-6 rounded-lg shadow-sm border">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-xl font-semibold text-gray-800">Recent Orders</h2>
+                            <a href="orders.html" class="text-sm font-medium text-indigo-600 hover:text-indigo-800">View All &rarr;</a>
+                        </div>
+                        <div id="orders-preview" class="space-y-4">
+                           <p id="no-orders-preview" class="text-gray-500">No recent orders.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Side Column -->
+                <div class="space-y-8">
+                    <div class="bg-white/90 p-6 rounded-lg shadow-sm border">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-4">Quick Links</h2>
+                        <ul class="space-y-2">
+                            <li>
+                                <a href="sell-item.html" class="text-indigo-600 hover:underline">Sell an Item</a>
+                            </li>
+                            <li>
+                                <a href="orders.html" class="text-indigo-600 hover:underline">My Orders</a>
+                            </li>
+                            <li>
+                                <a href="messages.html" class="text-indigo-600 hover:underline">Messages</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- My Notes Section -->
+                    <div class="bg-white/90 p-6 rounded-lg shadow-sm border">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-4">My Notes</h2>
+                        <textarea id="user-notes" class="w-full h-32 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="Jot down some notes..."></textarea>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // --- DATA & LOCAL STORAGE FUNCTIONS ---
+        function getCart() { return JSON.parse(localStorage.getItem('campusCart')) || []; }
+        function getWishlist() { return JSON.parse(localStorage.getItem('campusWishlist')) || []; }
+        const mockOrders = [
+            { orderId: 'C123-456', orderDate: '2025-06-25', total: 48.60, items: [{ id: 1, name: "Psychology 101 Textbook", price: 45.00, seller: "Alex J.", imageUrl: "https://images.unsplash.com/photo-1544716278-e513176f20b5?auto=format&fit=crop&w=100&q=80" }] },
+            { orderId: 'C789-101', orderDate: '2025-06-20', total: 86.40, items: [{ id: 2, name: "Mini Fridge", price: 80.00, seller: "Maakham J.", imageUrl: "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=100&q=80" }] },
+            { orderId: 'C334-556', orderDate: '2025-04-12', total: 27.00, items: [{ id: 3, name: "Adjustable Laptop Stand", price: 25.00, seller: "Mike D.", imageUrl: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=100&q=80" }] }
+        ];
+
+        function updateBadge(id, getItems, reduceFn) {
+            const badge = document.getElementById(id);
+            if (badge) { const items = getItems(); const count = items.reduce(reduceFn, 0); badge.textContent = count; badge.classList.toggle('hidden', count === 0); }
+        }
+        function updateCartBadge() { updateBadge('cart-count-badge', getCart, (sum, item) => sum + item.quantity); }
+        function updateWishlistBadge() { updateBadge('wishlist-count-badge', getWishlist, (sum, item) => sum + 1); }
+        
+        // --- RENDER PREVIEWS ---
+        function renderWishlistPreview() {
+            const wishlist = getWishlist();
+            const previewContainer = document.getElementById('wishlist-preview');
+            const emptyMsg = document.getElementById('empty-wishlist-preview');
+            previewContainer.innerHTML = ''; 
+            
+            if (wishlist.length === 0) {
+                 if(emptyMsg) previewContainer.appendChild(emptyMsg);
+                 if(emptyMsg) emptyMsg.classList.remove('hidden');
+            } else {
+                if (emptyMsg) emptyMsg.classList.add('hidden');
+                wishlist.slice(0, 2).forEach(item => {
+                    const itemEl = document.createElement('div');
+                    itemEl.className = 'flex items-center space-x-4';
+                    itemEl.innerHTML = `<img src="${item.imageUrl}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg"><div class="flex-grow"><p class="font-semibold text-gray-700">${item.name}</p><p class="text-sm text-gray-500">Sold by ${item.seller}</p></div><p class="text-lg font-bold text-gray-800">$${item.price.toFixed(2)}</p>`;
+                    previewContainer.appendChild(itemEl);
+                });
+            }
+        }
+        
+        function renderOrdersPreview() {
+            const previewContainer = document.getElementById('orders-preview');
+            const emptyMsg = document.getElementById('no-orders-preview');
+            previewContainer.innerHTML = '';
+
+            const today = new Date('2025-06-30T16:40:00');
+            const fourteenDaysAgo = new Date(today);
+            fourteenDaysAgo.setDate(today.getDate() - 14);
+
+            const recentOrders = mockOrders.filter(order => new Date(order.orderDate) >= fourteenDaysAgo);
+            
+            if(recentOrders.length === 0) {
+                if(emptyMsg) previewContainer.appendChild(emptyMsg);
+                if(emptyMsg) emptyMsg.classList.remove('hidden');
+            } else {
+                 if (emptyMsg) emptyMsg.classList.add('hidden');
+                 recentOrders.slice(0,2).forEach(order => {
+                     order.items.forEach(item => {
+                         const itemEl = document.createElement('div');
+                         itemEl.className = 'flex items-center space-x-4';
+                         itemEl.innerHTML = `<img src="${item.imageUrl}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg"><div class="flex-grow"><p class="font-semibold text-gray-700">${item.name}</p><p class="text-sm text-gray-500">Order #${order.orderId}</p></div><a href="rate-product.html?id=${item.id}" class="text-sm font-medium text-indigo-600 hover:underline">Rate</a>`;
+                         previewContainer.appendChild(itemEl);
+                     });
+                 });
+            }
+        }
+
+        // --- PAGE INITIALIZATION & EVENT LISTENERS ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const settingsBtn = document.getElementById('settings-btn');
+            const settingsMenu = document.getElementById('settings-menu');
+            const userMenuBtn = document.getElementById('user-menu-btn');
+            const accessibilityMenu = document.getElementById('accessibility-menu');
+            const backgroundUploadInput = document.getElementById('background-upload');
+            const backgroundContainer = document.getElementById('dashboard-background-container');
+            const notesTextarea = document.getElementById('user-notes');
+
+            if (settingsBtn) settingsBtn.addEventListener('click', (e) => { e.stopPropagation(); settingsMenu.classList.toggle('hidden'); });
+            if (userMenuBtn) userMenuBtn.addEventListener('click', (e) => { e.stopPropagation(); accessibilityMenu.classList.toggle('hidden'); });
+
+            if (backgroundUploadInput) {
+                backgroundUploadInput.addEventListener('change', (event) => {
+                    const file = event.target.files[0];
+                    if (file && file.type.startsWith('image/')) {
+                        const reader = new FileReader();
+                        reader.onload = (e) => { backgroundContainer.style.backgroundImage = `url('${e.target.result}')`; };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            }
+
+            if(notesTextarea) {
+                notesTextarea.value = localStorage.getItem('collegifyUserNotes') || '';
+                notesTextarea.addEventListener('input', (e) => {
+                    localStorage.setItem('collegifyUserNotes', e.target.value);
+                });
+            }
+            
+            // Initial render
+            updateCartBadge();
+            updateWishlistBadge();
+            renderWishlistPreview();
+            renderOrdersPreview();
+        });
+
+        window.addEventListener('click', (event) => {
+            const settingsMenu = document.getElementById('settings-menu');
+            const userMenu = document.getElementById('accessibility-menu');
+            const settingsBtn = document.getElementById('settings-btn');
+            const userMenuBtn = document.getElementById('user-menu-btn');
+
+            if (settingsMenu && !settingsMenu.classList.contains('hidden') && settingsBtn && !settingsBtn.contains(event.target)) {
+                settingsMenu.classList.add('hidden');
+            }
+            if (userMenu && !userMenu.classList.contains('hidden') && userMenuBtn && !userMenuBtn.contains(event.target)) {
+                 userMenu.classList.add('hidden');
+            }
+        });
+        // --- FETCH & DISPLAY LOGGED-IN USER NAME ---
+        const auth = firebase.auth();
+const db = firebase.database();
+
+auth.onAuthStateChanged(user => {
+    if (user) {
+        const userId = user.uid;
+        db.ref('user/' + userId).once('value').then(snapshot => {
+            const userData = snapshot.val();
+            const firstName = userData.firstName || 'Student';
+
+            const nameSpan = document.getElementById('user-name');
+            if (nameSpan) nameSpan.textContent = firstName;
+
+            const greeting = document.querySelector('h1.text-3xl');
+            if (greeting) greeting.textContent = `Welcome back, ${firstName}!`;
+        }).catch(() => {
+            document.getElementById('user-name').textContent = 'Student';
+        });
+    } else {
+        document.getElementById('user-name').textContent = 'Guest';
+    }
+});
+
+    </script>
+    
+</body>
+</html>

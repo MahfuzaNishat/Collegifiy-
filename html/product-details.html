@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Collegify+</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+    </style>
+</head>
+
+<body class="flex h-screen">
+
+    <!-- Vertical Sidebar -->
+    <aside class="w-64 bg-white text-gray-800 flex flex-col p-4 border-r border-gray-200">
+
+        <!-- Company Name -->
+        <div class="mb-8">
+            <a href="index.html" class="text-2xl font-bold text-gray-900">Collegify+</a>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="mb-6 relative">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </span>
+            <input type="text" placeholder="Search..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="flex-grow">
+             <ul>
+                <li class="mb-2"><a href="dashboard.html" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100"><svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg><span class="ml-3">Home</span></a></li>
+                <li class="mb-2"><a href="categories.html" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100"><svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg><span class="ml-3">Categories</span></a></li>
+            </ul>
+        </nav>
+        
+        <!-- Bottom Section -->
+        <div class="mt-auto">
+             <ul>
+                <li class="mb-2">
+                    <a href="cart.html" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100">
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                        <span class="ml-3 flex-1">Cart</span>
+                        <span id="cart-count-badge" class="inline-block py-0.5 px-2 text-xs font-semibold text-indigo-600 bg-indigo-100 rounded-full">0</span>
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a href="wishlist.html" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100">
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                        <span class="ml-3 flex-1">Wishlist</span>
+                        <span id="wishlist-count-badge" class="inline-block py-0.5 px-2 text-xs font-semibold text-pink-600 bg-pink-100 rounded-full">0</span>
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a href="#" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100">
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span class="ml-3">Tutorial</span>
+                    </a>
+                </li>
+                <li class="mb-2 relative">
+                    <button id="settings-btn" class="w-full flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100">
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.096 2.572-1.065z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        <span class="ml-3">Settings</span>
+                    </button>
+                    <div id="settings-menu" class="hidden absolute bottom-full left-0 mb-2 min-w-[200px] bg-white border border-gray-200 rounded-lg shadow-lg z-10">
+                        <a href="notifications.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Notifications</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Password Reset</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Terms & Conditions</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="border-t border-gray-200 mt-4 pt-4">
+            <div class="flex items-center w-full text-left">
+                <a href="profile.html" class="flex-grow flex items-center p-2 rounded-lg hover:bg-gray-100">
+                    <span class="inline-block h-8 w-8 rounded-full overflow-hidden bg-gray-100">
+                        <svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 20.993V24H0v-2.997A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </span>
+                    <span class="ml-3 font-medium text-gray-800">Student</span>
+                </a>
+                <div class="relative">
+                    <button id="user-menu-btn" class="p-2 rounded-lg hover:bg-gray-100">
+                        <svg class="w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+                        </svg>
+                    </button>
+                    <div id="accessibility-menu" class="hidden absolute bottom-full right-0 mb-2 min-w-[220px] bg-white border border-gray-200 rounded-lg shadow-lg z-10">
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Display and text size</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Reader mode</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Audio description</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Zoom</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Translate</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-grow p-10 overflow-y-auto">
+        <div id="product-details-container" class="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8"></div>
+        <div id="product-not-found" class="hidden text-center py-16">
+             <h2 class="text-2xl font-bold text-gray-800">Product Not Found</h2>
+             <p class="text-gray-500 mt-2">Sorry, we couldn't find the product you're looking for.</p>
+             <a href="products.html" class="mt-6 inline-block bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-indigo-700">Back to Products</a>
+        </div>
+    </main>
+
+    <script>
+        // --- DATA & LOCAL STORAGE FUNCTIONS ---
+        const allProducts = [
+            { id: 1, name: "Psychology 101 Textbook", price: 45.00, description: "Gently used textbook for PSYCH 101. No highlighting or writing inside. Latest edition.", seller: "Alex J.", contact: "alex.j@university.edu", imageUrl: "https://images.unsplash.com/photo-1544716278-e513176f20b5?auto=format&fit=crop&w=600&q=80" },
+            { id: 2, name: "Mini Fridge", price: 80.00, description: "Perfect condition mini fridge, great for dorm rooms. Kept things cold all year. Clean and ready for a new home.", seller: "Sarah K.", contact: "sarah.k@college.edu", imageUrl: "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=600&q=80" },
+            { id: 3, name: "Adjustable Laptop Stand", price: 25.00, description: "Ergonomic aluminum laptop stand. Helps with posture during long study sessions.", seller: "Mike D.", contact: "mike.d@study.net", imageUrl: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=600&q=80" },
+            { id: 4, name: "LED Desk Lamp", price: 15.00, description: "Bright desk lamp with multiple color temperatures. Perfect for late-night studying.", seller: "Emily R.", contact: "emily.r@university.edu", imageUrl: "https://images.unsplash.com/photo-1543508415-a690467a9d49?auto=format&fit=crop&w=600&q=80" },
+            { id: 5, name: "Noise-Cancelling Headphones", price: 120.00, description: "High-quality headphones, barely used. Comes with original case and charger.", seller: "Ben S.", contact: "ben.s@study.net", imageUrl: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80" },
+            { id: 6, name: "Graphic Calculator (TI-84)", price: 60.00, description: "Required for most math and engineering classes. Works perfectly.", seller: "Chloe T.", contact: "chloe.t@college.edu", imageUrl: "https://images.unsplash.com/photo-1595914371429-ab244105b2a4?auto=format&fit=crop&w=600&q=80" },
+            { id: 7, name: "Comfortable Dorm Chair", price: 40.00, description: "A comfy chair that fits well in small spaces. No stains or tears.", seller: "Jessica L.", contact: "jess.l@university.edu", imageUrl: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=600&q=80" },
+            { id: 8, name: "Boho Wall Tapestry", price: 20.00, description: "Large wall tapestry, adds a nice vibe to any room. 60x80 inches.", seller: "David P.", contact: "david.p@study.net", imageUrl: "https://images.unsplash.com/photo-1600078693244-106e2361846b?auto=format&fit=crop&w=600&q=80" }
+        ];
+
+        function getCart() { return JSON.parse(localStorage.getItem('campusCart')) || []; }
+        function saveCart(cart) { localStorage.setItem('campusCart', JSON.stringify(cart)); updateCartBadge(); }
+        function addToCart(product) { const cart = getCart(); const i = cart.findIndex(p => p.id === product.id); if(i > -1) { cart[i].quantity++; } else { cart.push({...product, quantity: 1}); } saveCart(cart); }
+        function getWishlist() { return JSON.parse(localStorage.getItem('campusWishlist')) || []; }
+        function saveWishlist(wishlist) { localStorage.setItem('campusWishlist', JSON.stringify(wishlist)); updateWishlistBadge(); }
+        function addToWishlist(product) { const list = getWishlist(); if(!list.find(p=>p.id===product.id)) { list.push(product); saveWishlist(list); } }
+        
+        function updateBadge(id, getItems, reduceFn) {
+            const badge = document.getElementById(id);
+            if (badge) { const items = getItems(); const count = items.reduce(reduceFn, 0); badge.textContent = count; badge.classList.toggle('hidden', count === 0); }
+        }
+        function updateCartBadge() { updateBadge('cart-count-badge', getCart, (sum, item) => sum + item.quantity); }
+        function updateWishlistBadge() { updateBadge('wishlist-count-badge', getWishlist, (sum, item) => sum + 1); }
+
+        // --- PAGE INITIALIZATION & EVENT LISTENERS ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('product-details-container');
+            const notFoundMsg = document.getElementById('product-not-found');
+            const urlParams = new URLSearchParams(window.location.search);
+            let productId = parseInt(urlParams.get('id'));
+            let product = isNaN(productId) ? allProducts[0] : allProducts.find(p => p.id === productId);
+
+            if (product) {
+                container.innerHTML = `
+                    <div><img src="${product.imageUrl}" alt="${product.name}" class="w-full h-auto object-cover rounded-lg shadow-md"></div>
+                    <div class="bg-white p-8 rounded-lg shadow-sm border">
+                        <h1 class="text-3xl font-extrabold text-gray-900 mb-2">${product.name}</h1>
+                        <p class="text-3xl font-bold text-indigo-600 mb-4">$${product.price.toFixed(2)}</p>
+                        <h2 class="text-lg font-semibold text-gray-800 mb-2">Description</h2>
+                        <p class="text-gray-600 mb-6">${product.description}</p>
+                        <div class="border-t pt-4"><h3 class="font-semibold text-gray-800">Seller Information</h3><p class="text-gray-600">Sold by: ${product.seller}</p><p class="text-gray-600">Contact: <a href="mailto:${product.contact}" class="text-indigo-500 hover:underline">${product.contact}</a></p></div>
+                        <div class="mt-6 flex gap-4">
+                            <button id="add-to-cart-btn" class="flex-1 bg-indigo-600 text-white font-semibold py-3 rounded-lg hover:bg-indigo-700 transition-colors">Add to Cart</button>
+                            <button id="add-to-wishlist-btn" class="p-3 border rounded-lg hover:bg-gray-100"><svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg></button>
+                        </div>
+                    </div>`;
+                
+                document.getElementById('add-to-cart-btn').addEventListener('click', (event) => { addToCart(product); event.target.textContent = 'Added!'; event.target.classList.add('bg-green-500'); event.target.disabled = true; });
+                document.getElementById('add-to-wishlist-btn').addEventListener('click', (e) => { addToWishlist(product); e.currentTarget.querySelector('svg').classList.add('text-pink-500', 'fill-current'); e.currentTarget.disabled = true; });
+            } else {
+                container.classList.add('hidden');
+                notFoundMsg.classList.remove('hidden');
+            }
+            updateCartBadge(); updateWishlistBadge();
+
+            // Menu toggles
+            const settingsBtn = document.getElementById('settings-btn');
+            const settingsMenu = document.getElementById('settings-menu');
+            const userMenuBtn = document.getElementById('user-menu-btn');
+            const accessibilityMenu = document.getElementById('accessibility-menu');
+
+            if (settingsBtn) settingsBtn.addEventListener('click', (e) => { e.stopPropagation(); settingsMenu.classList.toggle('hidden'); });
+            if (userMenuBtn) userMenuBtn.addEventListener('click', (e) => { e.stopPropagation(); accessibilityMenu.classList.toggle('hidden'); });
+        });
+
+        window.addEventListener('click', (event) => {
+            const settingsMenu = document.getElementById('settings-menu');
+            const userMenu = document.getElementById('accessibility-menu');
+            const settingsBtn = document.getElementById('settings-btn');
+            const userMenuBtn = document.getElementById('user-menu-btn');
+            
+            if (settingsMenu && !settingsMenu.classList.contains('hidden') && !settingsBtn.contains(event.target)) {
+                settingsMenu.classList.add('hidden');
+            }
+            if (userMenu && !userMenu.classList.contains('hidden') && !userMenuBtn.contains(event.target)) {
+                 userMenu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

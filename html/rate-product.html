@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate Product - Collegify+</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .star-rating svg {
+            cursor: pointer;
+            transition: color 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body class="flex h-screen">
+
+    <!-- Vertical Sidebar -->
+    <aside class="w-64 bg-white text-gray-800 flex flex-col p-4 border-r border-gray-200">
+
+        <!-- Company Name -->
+        <div class="mb-8">
+            <a href="index.html" class="text-2xl font-bold text-gray-900">Collegify+</a>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="mb-6">
+            <div class="relative">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </span>
+                <input type="text" placeholder="Search..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+            </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="flex-grow">
+            <ul>
+                <li class="mb-2">
+                    <a href="dashboard.html" class="flex items-center p-2 text-base font-normal text-white bg-indigo-600 rounded-lg">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                        </svg>
+                        <span class="ml-3">Home</span>
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a href="categories.html" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100">
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                        <span class="ml-3">Categories</span>
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a href="orders.html" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100">
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                        </svg>
+                        <span class="ml-3">My Orders</span>
+                    </a>
+                </li>
+                 <li class="mb-2">
+                    <a href="messages.html" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100">
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                        </svg>
+                        <span class="ml-3">Messages</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Bottom Section -->
+        <div class="mt-auto">
+            <ul>
+                <li class="mb-2">
+                    <a href="cart.html" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100">
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                        <span class="ml-3 flex-1">Cart</span>
+                        <span id="cart-count-badge" class="inline-block py-0.5 px-2 text-xs font-semibold text-indigo-600 bg-indigo-100 rounded-full">0</span>
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a href="wishlist.html" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100">
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                        <span class="ml-3 flex-1">Wishlist</span>
+                        <span id="wishlist-count-badge" class="inline-block py-0.5 px-2 text-xs font-semibold text-pink-600 bg-pink-100 rounded-full">0</span>
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a href="#" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100">
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span class="ml-3">Tutorial</span>
+                    </a>
+                </li>
+                <li class="mb-2 relative">
+                    <button id="settings-btn" class="w-full flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100">
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.096 2.572-1.065z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        <span class="ml-3">Settings</span>
+                    </button>
+                    <div id="settings-menu" class="hidden absolute bottom-full left-0 mb-2 min-w-[200px] bg-white border border-gray-200 rounded-lg shadow-lg z-10">
+                        <a href="notifications.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Notifications</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Password Reset</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Terms & Conditions</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- User Profile / Accessibility -->
+        <div class="border-t border-gray-200 mt-4 pt-4">
+            <div class="flex items-center w-full text-left">
+                <a href="profile.html" class="flex-grow flex items-center p-2 rounded-lg hover:bg-gray-100">
+                    <span class="inline-block h-8 w-8 rounded-full overflow-hidden bg-gray-100">
+                        <svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 20.993V24H0v-2.997A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </span>
+                    <span class="ml-3 font-medium text-gray-800">Student</span>
+                </a>
+                <div class="relative">
+                    <button id="user-menu-btn" class="p-2 rounded-lg hover:bg-gray-100">
+                        <svg class="w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                          <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+                        </svg>
+                    </button>
+                    <div id="accessibility-menu" class="hidden absolute bottom-full right-0 mb-2 min-w-[220px] bg-white border border-gray-200 rounded-lg shadow-lg z-10">
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Display and text size</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Reader mode</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Audio description</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Zoom</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Translate</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-grow p-10 overflow-y-auto">
+        <div class="max-w-2xl mx-auto">
+            <h1 class="text-3xl font-bold text-gray-900 mb-6">Rate Product</h1>
+            <div class="bg-white p-8 rounded-lg shadow-sm border mb-8">
+                <div class="flex items-center space-x-4 mb-6">
+                    <img src="https://images.unsplash.com/photo-1544716278-e513176f20b5?auto=format&fit=crop&w=100&q=80" alt="Product Image" class="w-20 h-20 object-cover rounded-lg">
+                    <div>
+                        <h2 class="text-xl font-semibold text-gray-800">Psychology 101 Textbook</h2>
+                        <p class="text-sm text-gray-500">Sold by Alex J.</p>
+                    </div>
+                </div>
+                
+                <form id="rate-product-form">
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Your Rating</label>
+                            <div id="star-rating-container" class="star-rating flex items-center space-x-1 text-gray-300"></div>
+                            <input type="hidden" name="rating" id="rating-value" value="0">
+                        </div>
+                        <div>
+                            <label for="review-title" class="block text-sm font-medium text-gray-700">Review Title</label>
+                            <input type="text" id="review-title" name="review-title" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="e.g., Great condition!">
+                        </div>
+                        <div>
+                            <label for="review" class="block text-sm font-medium text-gray-700">Your Review</label>
+                            <textarea id="review" name="review" rows="4" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Share your thoughts on the product..."></textarea>
+                        </div>
+                        <div class="text-right">
+                            <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                Submit Review
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Existing Reviews -->
+            <div id="reviews-section">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">What other students are saying</h2>
+                <div id="reviews-container" class="space-y-6"></div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Star rating interaction logic
+            const starContainer = document.getElementById('star-rating-container');
+            const ratingInput = document.getElementById('rating-value');
+            const totalStars = 5;
+
+            for (let i = 1; i <= totalStars; i++) {
+                const star = document.createElement('span');
+                star.dataset.value = i;
+                star.innerHTML = `<svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>`;
+                starContainer.appendChild(star);
+            }
+            
+            const stars = starContainer.querySelectorAll('span');
+
+            function setActiveStars(rating) {
+                stars.forEach(star => {
+                    star.querySelector('svg').classList.toggle('text-yellow-400', parseInt(star.dataset.value) <= rating);
+                    star.querySelector('svg').classList.toggle('text-gray-300', parseInt(star.dataset.value) > rating);
+                });
+            }
+
+            starContainer.addEventListener('click', (e) => {
+                const targetStar = e.target.closest('span');
+                if (targetStar) { const rating = targetStar.dataset.value; ratingInput.value = rating; setActiveStars(rating); }
+            });
+            starContainer.addEventListener('mouseover', (e) => {
+                const targetStar = e.target.closest('span');
+                if (targetStar) { setActiveStars(targetStar.dataset.value); }
+            });
+            starContainer.addEventListener('mouseout', () => { setActiveStars(ratingInput.value); });
+            
+            // Mock reviews data
+            const reviews = [
+                { user: "Sarah K.", rating: 5, title: "Just what I needed!", comment: "The textbook was in excellent condition, almost like new. The seller was also very responsive and friendly." },
+                { user: "Mike D.", rating: 4, title: "Good, but a little worn", comment: "The book is perfectly usable, but has a bit of wear on the cover. Overall a good deal for the price." },
+            ];
+            
+            const reviewsContainer = document.getElementById('reviews-container');
+            if (reviews.length > 0) {
+                reviews.forEach(review => {
+                    const reviewEl = document.createElement('div');
+                    reviewEl.className = 'bg-white p-6 rounded-lg shadow-sm border';
+                    let starHtml = '';
+                    for (let i = 0; i < 5; i++) {
+                        starHtml += `<svg class="w-5 h-5 ${i < review.rating ? 'text-yellow-400' : 'text-gray-300'}" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>`;
+                    }
+
+                    reviewEl.innerHTML = `
+                        <div class="flex items-center mb-2">
+                            <div class="flex items-center">${starHtml}</div>
+                            <p class="ml-2 text-sm text-gray-600">${review.rating}.0</p>
+                        </div>
+                        <h3 class="font-semibold text-gray-800">${review.title}</h3>
+                        <p class="text-sm text-gray-500 mb-2">by ${review.user}</p>
+                        <p class="text-gray-600">${review.comment}</p>
+                    `;
+                    reviewsContainer.appendChild(reviewEl);
+                });
+            } else {
+                reviewsContainer.innerHTML = `<p class="text-gray-500">No reviews yet.</p>`;
+            }
+        });
+    </script>
+
+</body>
+</html>

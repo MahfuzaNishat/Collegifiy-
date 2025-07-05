@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Collegifiy+</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .product-card .overflow-hidden {
+            border-radius: 0.5rem;
+        }
+        .product-card-image {
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover .product-card-image {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-gray-900">Collegifiy+</a>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="products.html" class="text-indigo-600 font-semibold">Products</a>
+                <a href="categories.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Categories</a>
+                <a href="/html/about.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">About us</a>
+            </div>
+            <a href="/auth/createaccount.html" class="bg-indigo-600 text-white font-semibold px-5 py-2 rounded-lg hover:bg-indigo-700 transition duration-300">Sign Up / Log In</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
+            <h1 id="page-title" class="text-4xl font-extrabold text-gray-900">All Products</h1>
+            <div class="flex items-center gap-4">
+                <input type="text" id="search-bar" placeholder="Search for items..." class="w-full md:w-64 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                <button id="speech-btn" aria-label="Search by voice" class="p-2 bg-gray-200 rounded-lg hover:bg-gray-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v3a3 3 0 01-3 3z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Product Grid -->
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8"></div>
+        <p id="no-results" class="hidden text-center text-gray-500 mt-8">No products found matching your search.</p>
+    </main>
+    
+    <script>
+        const allProducts = [
+             { id: 1, name: "Psychology 101 Textbook", price: 45.00, category: "Textbooks", imageUrl: "https://images.unsplash.com/photo-1544716278-e513176f20b5?auto=format&fit=crop&w=400&q=80" },
+            { id: 2, name: "Mini Fridge", price: 80.00, category: "Furniture", imageUrl: "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=400&q=80" },
+            { id: 3, name: "Adjustable Laptop Stand", price: 25.00, category: "Electronics", imageUrl: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=400&q=80" },
+            { id: 4, name: "LED Desk Lamp", price: 15.00, category: "Dorm Decor", imageUrl: "https://images.unsplash.com/photo-1543508415-a690467a9d49?auto=format&fit=crop&w=400&q=80" },
+            { id: 5, name: "Noise-Cancelling Headphones", price: 120.00, category: "Electronics", imageUrl: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80" },
+            { id: 6, name: "Graphic Calculator (TI-84)", price: 60.00, category: "Electronics", imageUrl: "https://images.unsplash.com/photo-1595914371429-ab244105b2a4?auto=format&fit=crop&w=400&q=80" },
+            { id: 7, name: "Comfortable Dorm Chair", price: 40.00, category: "Furniture", imageUrl: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=400&q=80" },
+            { id: 8, name: "Boho Wall Tapestry", price: 20.00, category: "Dorm Decor", imageUrl: "https://images.unsplash.com/photo-1600078693244-106e2361846b?auto=format&fit=crop&w=400&q=80" }
+        ];
+
+        function renderProducts(productsToRender) {
+            const productGrid = document.getElementById('product-grid');
+            const noResultsMsg = document.getElementById('no-results');
+            productGrid.innerHTML = '';
+
+            if (productsToRender.length === 0) {
+                noResultsMsg.classList.remove('hidden');
+            } else {
+                noResultsMsg.classList.add('hidden');
+            }
+
+            productsToRender.forEach(product => {
+                const card = `
+                    <a href="product-details.html?id=${product.id}" class="product-card bg-white rounded-lg shadow-md flex flex-col hover:shadow-xl transition-shadow">
+                        <div class="overflow-hidden h-48">
+                            <img src="${product.imageUrl}" alt="${product.name}" class="product-card-image w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/e2e8f0/333333?text=Image';">
+                        </div>
+                        <div class="p-4 flex flex-col flex-grow">
+                            <h3 class="text-lg font-semibold text-gray-900 truncate flex-grow">${product.name}</h3>
+                            <p class="text-2xl font-bold text-indigo-600 mt-2 mb-3">$${product.price.toFixed(2)}</p>
+                        </div>
+                    </a>
+                `;
+                productGrid.innerHTML += card;
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchBar = document.getElementById('search-bar');
+            const pageTitle = document.getElementById('page-title');
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get('category');
+
+            let productsToDisplay = allProducts;
+
+            if (category) {
+                productsToDisplay = allProducts.filter(p => p.category === category);
+                pageTitle.textContent = category;
+            }
+
+            renderProducts(productsToDisplay);
+
+            function filterProducts() {
+                const searchTerm = searchBar.value.toLowerCase();
+                const filtered = productsToDisplay.filter(p => 
+                    p.name.toLowerCase().includes(searchTerm)
+                );
+                renderProducts(filtered);
+            }
+
+            searchBar.addEventListener('input', filterProducts);
+        });
+    </script>
+</body>
+</html>

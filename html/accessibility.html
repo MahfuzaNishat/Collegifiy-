@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Collegify+ Homepage</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+    }
+
+    .high-contrast {
+      background-color: #000 !important;
+      color: #fff !important;
+    }
+
+    .high-contrast a {
+      color: #00ffff !important;
+    }
+
+    .high-contrast button {
+      background-color: #fff !important;
+      color: #000 !important;
+      border: 2px solid #fff;
+    }
+
+    .high-contrast header,
+    .high-contrast footer,
+    .high-contrast section,
+    .high-contrast div {
+      background-color: #000 !important;
+      color: #fff !important;
+    }
+
+    body.large-text {
+      font-size: 125%;
+    }
+  </style>
+</head>
+
+<body class="relative" role="document">
+
+  <!-- Accessibility Toggle Buttons -->
+  <script>
+    if (localStorage.getItem("contrast") === "high") {
+      document.body.classList.add("high-contrast");
+    }
+    if (localStorage.getItem("fontSize") === "large") {
+      document.body.classList.add("large-text");
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const contrastBtn = document.createElement("button");
+      contrastBtn.textContent = "Toggle Contrast";
+      contrastBtn.setAttribute("aria-label", "Toggle high contrast mode");
+      contrastBtn.className =
+        "fixed bottom-4 right-4 z-50 bg-indigo-600 text-white px-4 py-2 rounded shadow hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400";
+
+      contrastBtn.addEventListener("click", () => {
+        document.body.classList.toggle("high-contrast");
+        localStorage.setItem(
+          "contrast",
+          document.body.classList.contains("high-contrast") ? "high" : "normal"
+        );
+      });
+
+      const fontBtn = document.createElement("button");
+      fontBtn.textContent = "Toggle Large Text";
+      fontBtn.setAttribute("aria-label", "Toggle large text size");
+      fontBtn.className =
+        "fixed bottom-16 right-4 z-50 bg-green-600 text-white px-4 py-2 rounded shadow hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400";
+
+      fontBtn.addEventListener("click", () => {
+        document.body.classList.toggle("large-text");
+        localStorage.setItem(
+          "fontSize",
+          document.body.classList.contains("large-text") ? "large" : "normal"
+        );
+      });
+
+      document.body.appendChild(contrastBtn);
+      document.body.appendChild(fontBtn);
+    });
+  </script>
+
+  <!-- Navbar -->
+  <header class="bg-white shadow-sm p-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold text-gray-800">Collegify+</h1>
+    <nav class="space-x-4 text-sm">
+      <a href="#" class="text-gray-700 hover:text-indigo-600">How to Use the Website</a>
+      <a href="#" class="text-gray-700 hover:text-indigo-600">Mission</a>
+      <a href="#" class="bg-indigo-600 text-white px-4 py-1 rounded hover:bg-indigo-700">Sign Up / Log In</a>
+    </nav>
+  </header>
+
+  <!-- Media Accessibility Player -->
+  <div class="absolute top-4 right-4 w-80 bg-white p-4 rounded-lg shadow-lg border z-50">
+    <h3 class="text-lg font-semibold text-gray-800 mb-2">Media Accessibility</h3>
+
+    <audio id="audioPlayer" controls class="w-full mb-2" aria-label="Audio player for accessibility info">
+      <source src="viper.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+      <a href="viper.mp3" class="text-indigo-600 underline">Download Audio</a>
+    </audio>
+
+    <video id="videoPlayer" controls class="w-full mb-2" aria-label="Video player with subtitles">
+      <source src="example.mp4" type="video/mp4" />
+      <source src="example.webm" type="video/webm" />
+      <track kind="subtitles" src="subtitles_en.vtt" srclang="en" label="English" default />
+      Your browser does not support the video element.
+      <a href="example.mp4" class="text-indigo-600 underline">Download Video</a>
+    </video>
+
+    <div class="flex justify-between mt-2 text-sm text-gray-600">
+      <button id="rwdBtn" class="hover:text-indigo-600 focus:outline-none focus:ring focus:ring-indigo-300">⏪ Rewind</button>
+      <button id="playPauseBtn" class="hover:text-indigo-600 focus:outline-none focus:ring focus:ring-indigo-300">⏯️ Play/Pause</button>
+      <button id="fwdBtn" class="hover:text-indigo-600 focus:outline-none focus:ring focus:ring-indigo-300">⏩ Forward</button>
+    </div>
+  </div>
+
+  <!-- Testimonials Section -->
+  <section class="py-16 px-8 text-center bg-indigo-50">
+    <h2 class="text-3xl font-bold mb-10 text-gray-800">What Students Are Saying</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <div class="bg-white p-6 rounded-lg shadow">
+        <p class="text-gray-600">"As a visually impaired student, finding an online marketplace that’s easy to navigate is tough. Collegify+’s zoom and screen reader support are fantastic."</p>
+        <div class="mt-4 text-left">
+          <p class="font-semibold text-lg" role="heading" aria-level="3">Somia K.</p>
+          <p class="text-sm text-gray-500">Information Systems Major</p>
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow">
+        <p class="text-gray-600">"I listed my old mini-fridge and it was sold in a day! The process was so simple. I love it."</p>
+        <div class="mt-4 text-left">
+          <p class="font-semibold text-lg" role="heading" aria-level="3">Maakham J.</p>
+          <p class="text-sm text-gray-500">Computer Science & Business Administration Major</p>
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow">
+        <p class="text-gray-600">"The high-contrast mode is a game-changer for me. I can browse for hours without straining my eyes."</p>
+        <div class="mt-4 text-left">
+          <p class="font-semibold text-lg" role="heading" aria-level="3">Mahfuza A.</p>
+          <p class="text-sm text-gray-500">Computer Science Major</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-gray-100 py-10 px-8 mt-16">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <h4 class="font-bold mb-2">Collegify+</h4>
+        <p>Your one-stop shop for everything you need for college life, built by students, for students.</p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-2">Quick Links</h4>
+        <ul class="space-y-1">
+          <li><a href="#" class="hover:underline">Home</a></li>
+          <li><a href="#" class="hover:underline">Sign-Up / Log In</a></li>
+          <li><a href="#" class="hover:underline">About Us</a></li>
+          <li><a href="#" class="hover:underline">Tutorial on Website</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold mb-2">Connect With Us</h4>
+        <a href="#" class="hover:underline">YouTube</a>
+      </div>
+    </div>
+    <p class="text-center text-sm text-gray-400 mt-10">© 2025 Collegify+. All rights reserved.</p>
+  </footer>
+
+  <!-- Media Player Script -->
+  <script>
+    const player = document.getElementById("videoPlayer");
+    const audio = document.getElementById("audioPlayer");
+    const rwdBtn = document.getElementById("rwdBtn");
+    const fwdBtn = document.getElementById("fwdBtn");
+    const playPauseBtn = document.getElementById("playPauseBtn");
+
+    player?.addEventListener('play', () => audio?.pause());
+    audio?.addEventListener('play', () => player?.pause());
+
+    rwdBtn.onclick = () => {
+      if (player) player.currentTime -= 3;
+      if (audio) audio.currentTime -= 3;
+    };
+
+    fwdBtn.onclick = () => {
+      if (player) {
+        player.currentTime += 3;
+        if (player.currentTime >= player.duration) {
+          player.pause();
+          playPauseBtn.textContent = "▶️ Play";
+        }
+      }
+      if (audio) audio.currentTime += 3;
+    };
+
+    playPauseBtn.onclick = () => {
+      const videoPaused = player?.paused;
+      const audioPaused = audio?.paused;
+
+      if (videoPaused) player?.play();
+      else player?.pause();
+
+      if (audioPaused) audio?.play();
+      else audio?.pause();
+
+      playPauseBtn.textContent = videoPaused ? "⏸️ Pause" : "▶️ Play";
+    };
+  </script>
+
+</body>
+
+</html>

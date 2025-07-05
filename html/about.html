@@ -1,0 +1,144 @@
+<!DOCTYPE hmtl>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About us - Collegify+</title>
+    <script src="http://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .team-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-b from-gray-50 to-indigo-50 text-gray-800">
+
+     <!-- Header & Navigation -->
+    <header class="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="index.html" class="text-2xl font-bold text-gray-900">Collegify+</a>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#" class="text-gray-600 hover:text-indigo-600 transition duration-300">Website Tutorial</a>
+                <a href="about.html" class="text-indigo-600 font-semibold">About us</a>
+            </div>
+                <a href="/html/auth/createaccount.html" class="bg-indigo-600 text-white font-semibold px-5 py-2 rounded-lg hover:bg-indigo-700 transition duration-300">Sign Up / Log In</a>
+        </nav>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-16">
+        
+        <!-- "Our Story" Section -->
+        <section class="mb-24 text-center max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight">Our Story</h1>
+            <p class="mt-6 text-lg text-gray-700">
+                Collegify+ was born from a simple idea in a late-night library session: what if there was an easier way for students to buy, sell, and trade essentials without breaking the bank? We were tired of overpriced textbooks and the hassle of getting rid of stuff at the end of the semester. So, we built the solution we wished we had... a marketplace for students, by students.
+            </p>
+        </section>
+    
+        <!-- "Meet the Team" Section -->
+        <section>
+            <div class="text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Meet the Minds Behind the Marketplace</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">We're a small but mighty team, fueled by coffee, celsius and a shared passion for building things that help people.</p>
+            </div>
+    
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-12">
+            
+                <!-- Maakham Card -->
+                <div class="team-card text-center bg-white p-8 rounded-xl shadow-md">
+                    <div class="w-40 h-40 mx-auto rounded-full shadow-lg bg-gradient-to-br from-indigo-400 to-blue-500 flex items-center justify-center">
+                        <span class="text-5xl font-bold text-white">MJ</span>
+                    </div>
+                    <h3 class="mt-6 text-2xl font-bold text-gray-900">Maakham Javed</h3>
+                    <p class="mt-1 text-indigo-600 font-semibold">Co-Founder</p>
+                    <p class="mt-4 text-gray-600 italic">"Fun Fact: Can solve a Rubik's Cube in under a minute."</p>
+                    <div class="mt-6 flex justify-center space-x-5">
+                        <a href="https://www.linkedin.com/in/mj03/" class="text-gray-400 hover:text-indigo-500" title="LinkedIn">
+                            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/javedmaakham?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="text-gray-400 hover:text-pink-500" title="Instagram">
+                            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.012 3.584-.07 4.85c-.148 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.012-3.584.07-4.85c.148-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.644-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44-.645-1.44-1.441-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:javedmaakham@gmail.com" class="text-gray-400 hover:text-red-500" title="Gmail">
+                            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+    
+                <!-- Somia Card -->
+                <div class="team-card text-center bg-white p-8 rounded-xl shadow-md">
+                    <div class="w-40 h-40 mx-auto rounded-full shadow-lg bg-gradient-to-br from-pink-400 to-red-500 flex items-center justify-center">
+                        <span class="text-5xl font-bold text-white">SK</span>
+                    </div>
+                    <h3 class="mt-6 text-2xl font-bold text-gray-900">Somia Khan</h3>
+                    <p class="mt-1 text-indigo-600 font-semibold">Co-Founder</p>
+                    <p class="mt-4 text-gray-600 italic">"Fun Fact: She is the most beautiful celebrity in our college."</p>
+                    <div class="mt-6 flex justify-center space-x-5">
+                        <a href="https://www.linkedin.com/in/somia-khan-139791332?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BVA3pLE%2BFTt%2BlCPtEA5v6%2Bw%3D%3D" class="text-gray-400 hover:text-indigo-500" title="LinkedIn">
+                            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/somiakhann/?utm_source=ig_web_button_share_sheet" class="text-gray-400 hover:text-pink-500" title="Instagram">
+                            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.012 3.584-.07 4.85c-.148 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.012-3.584.07-4.85c.148-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.644-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44-.645-1.44-1.441-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:somiakhan080@gmail.com" class="text-gray-400 hover:text-red-500" title="Gmail">
+                            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+    
+                <!-- Mahfuza Card -->
+                <div class="team-card text-center bg-white p-8 rounded-xl shadow-md">
+                    <div class="w-40 h-40 mx-auto rounded-full shadow-lg bg-gradient-to-br from-green-400 to-cyan-500 flex items-center justify-center">
+                        <span class="text-5xl font-bold text-white">MN</span>
+                    </div>
+                    <h3 class="mt-6 text-2xl font-bold text-gray-900">Mahfuza Ahmed Nishat</h3>
+                    <p class="mt-1 text-indigo-600 font-semibold">Co-Founder</p>
+                    <p class="mt-4 text-gray-600 italic">"Fun Fact: The nicest person on the planet. Like that's real talent."</p>
+                    <div class="mt-6 flex justify-center space-x-5">
+                        <a href="https://www.linkedin.com/in/mahfuza-nishat-80177a354?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B6oTfkTmWTFS4%2Fl%2BIYPeW9w%3D%3D" class="text-gray-400 hover:text-indigo-500" title="LinkedIn">
+                            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/xnishat.ahmed/" class="text-gray-400 hover:text-pink-500" title="Instagram">
+                            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.012 3.584-.07 4.85c-.148 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.012-3.584.07-4.85c.148-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.644-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44-.645-1.44-1.441-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:mahfuzanishat2020@example.com" class="text-gray-400 hover:text-red-500" title="Gmail">
+                            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+</body>
+</html>
