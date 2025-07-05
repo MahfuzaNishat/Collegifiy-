@@ -112,9 +112,11 @@
                     </button>
                     <div id="settings-menu" class="hidden absolute bottom-full left-0 mb-2 min-w-[200px] bg-white border border-gray-200 rounded-lg shadow-lg z-10">
                         <a href="notifications.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Notifications</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Password Reset</a>
                         <a href="terms.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Terms & Conditions</a>
                     </div>
+                </li>
+                <li>
+                    <div id="google_translate_element"></div>
                 </li>
             </ul>
         </div>
@@ -137,11 +139,7 @@
                         </svg>
                     </button>
                     <div id="accessibility-menu" class="hidden absolute bottom-full right-0 mb-2 min-w-[220px] bg-white border border-gray-200 rounded-lg shadow-lg z-10">
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Display and text size</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Reader mode</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Audio description</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Zoom</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Translate</a>
+                        <a href="display-text.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Display and text size</a>
                     </div>
                 </div>
             </div>
@@ -150,69 +148,206 @@
 
     <!-- Main Content -->
     <main class="flex-grow p-10 overflow-y-auto">
-        <h1 class="text-3xl font-bold text-gray-900 mb-6">My Profile</h1>
-        <div class="bg-white p-8 rounded-lg shadow">
-            <h2 class="text-xl font-semibold mb-4">User Information</h2>
-            <p class="text-gray-600">Profile details will be displayed here.</p>
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+            <h1 class="text-3xl font-bold text-gray-900">My Profile</h1>
+            <button class="mt-4 md:mt-0 px-4 py-2 bg-indigo-600 border border-transparent rounded-md text-sm font-medium text-white hover:bg-indigo-700">
+                Edit Profile
+            </button>
+        </div>
+    
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <div class="lg:col-span-1 space-y-6">
+                <div class="bg-white p-6 rounded-lg shadow-sm border text-center">
+                    <img id="profile-picture" src="https://placehold.co/128x128/e2e8f0/333333?text=S" alt="User Avatar" class="w-32 h-32 rounded-full mx-auto mb-4">
+                    <h2 id="profile-name" class="text-2xl font-bold text-gray-800"></h2>
+                    <p id="profile-university" class="text-sm text-gray-500"></p>
+                    <p id="profile-major" class="text-sm text-gray-500"></p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm border">
+                    <h3 class="font-semibold text-gray-800 mb-2">Seller Stats</h3>
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-600">Average Rating</span>
+                            <div id="stats-avg-rating" class="flex items-center">
+                                </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="bg-white p-6 rounded-lg shadow-sm border">
+                    <h3 class="font-semibold text-gray-800 mb-2">About Me</h3>
+                    <p id="profile-bio" class="text-gray-600 text-sm"></p>
+                </div>
+            </div>
+    
+            <div class="lg:col-span-2 space-y-8">
+                <div class="bg-white p-6 rounded-lg shadow-sm border">
+                    <h3 class="font-semibold text-gray-800 mb-4">Seller Reviews</h3>
+                    <div id="seller-reviews-container" class="space-y-6">
+                        <p class="text-gray-500 text-sm">You have no reviews yet.</p>
+                    </div>
+                </div>
+    
+                <div class="bg-white p-6 rounded-lg shadow-sm border">
+                    <h3 class="font-semibold text-gray-800 mb-4">My Active Listings</h3>
+                    <div id="active-listings-container" class="space-y-4">
+                        <p class="text-gray-500 text-sm">You have no active listings.</p>
+                    </div>
+                </div>
+            </div>
+    
         </div>
     </main>
 
     <script>
-        // --- DATA & LOCAL STORAGE FUNCTIONS ---
-        function getCart() { return JSON.parse(localStorage.getItem('campusCart')) || []; }
-        function getWishlist() { return JSON.parse(localStorage.getItem('campusWishlist')) || []; }
-
-        function updateBadge(id, getItems, reduceFn) {
-            const badge = document.getElementById(id);
-            if (badge) {
-                const items = getItems();
-                const count = items.reduce(reduceFn, 0);
-                badge.textContent = count;
-                badge.classList.toggle('hidden', count === 0);
-            }
-        }
-        function updateCartBadge() { updateBadge('cart-count-badge', getCart, (sum, item) => sum + item.quantity); }
-        function updateWishlistBadge() { updateBadge('wishlist-count-badge', getWishlist, (sum, item) => sum + 1); }
-
-        // --- PAGE INITIALIZATION & EVENT LISTENERS ---
         document.addEventListener('DOMContentLoaded', () => {
-            const settingsBtn = document.getElementById('settings-btn');
-            const settingsMenu = document.getElementById('settings-menu');
-            const userMenuBtn = document.getElementById('user-menu-btn');
-            const accessibilityMenu = document.getElementById('accessibility-menu');
-
-            if (settingsBtn) {
-                settingsBtn.addEventListener('click', (event) => {
-                    event.stopPropagation();
-                    settingsMenu.classList.toggle('hidden');
-                });
-            }
-
-            if (userMenuBtn) {
-                userMenuBtn.addEventListener('click', (event) => {
-                    event.stopPropagation();
-                    accessibilityMenu.classList.toggle('hidden');
-                });
+        
+            // --- MOCK DATA ---
+            const userProfile = {
+                name: "Student",
+                university: "Brooklyn College",
+                major: "Computer Science",
+                profilePictureUrl: "https://placehold.co/128x128/e2e8f0/333333?text=S",
+                bio: "I'm a computer science student selling some of my old textbooks and dorm gear. Everything is in great condition. Feel free to reach out with any questions!",
+            };
+        
+            const allProducts = [
+                { id: 1, name: "Psychology 101 Textbook", price: 45.00, seller: "Alex J.", imageUrl: "https://images.unsplash.com/photo-1544716278-e513176f20b5?auto=format&fit=crop&w=100&q=80" },
+                { id: 5, name: "Noise-Cancelling Headphones", price: 120.00, seller: "Student", imageUrl: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=100&q=80" },
+                { id: 6, name: "Graphic Calculator (TI-84)", price: 60.00, seller: "Student", imageUrl: "https://images.unsplash.com/photo-1595914371429-ab244105b2a4?auto=format&fit=crop&w=100&q=80" },
+            ];
+            
+            const sellerReviews = [
+                { user: "Sarah K.", rating: 5, comment: "Great seller! Communication was fast and the item was exactly as described. Would definitely buy from them again." },
+                { user: "Mike D.", rating: 4, comment: "Smooth transaction and friendly seller. The item had a little more wear than I expected, but still a great deal for the price." }
+            ];
+        
+            // --- NEW: STATE FOR EDIT MODE ---
+            let isEditMode = false;
+            
+            // --- GET ELEMENTS ---
+            const editButton = document.querySelector('button.bg-indigo-600');
+            const profileNameEl = document.getElementById('profile-name');
+            const universityEl = document.getElementById('profile-university');
+            const majorEl = document.getElementById('profile-major');
+            const bioEl = document.getElementById('profile-bio');
+        
+        
+            // --- HELPER FUNCTIONS ---
+            function createStarRating(rating, size = 'w-5 h-5') {
+                let starsHtml = '';
+                for (let i = 1; i <= 5; i++) {
+                    const color = i <= rating ? 'text-yellow-400' : 'text-gray-300';
+                    starsHtml += `<svg class="${size} ${color}" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>`;
+                }
+                return starsHtml;
             }
             
-            // Initial badge updates
-            updateCartBadge();
-            updateWishlistBadge();
+            // --- NEW: EDIT-IN-PLACE FUNCTIONALITY ---
+            function toggleEditMode() {
+                if (isEditMode) {
+                    // --- SAVE CHANGES ---
+                    userProfile.name = document.getElementById('input-name').value;
+                    userProfile.university = document.getElementById('input-university').value;
+                    userProfile.major = document.getElementById('input-major').value;
+                    userProfile.bio = document.getElementById('input-bio').value;
+        
+                    // Revert to static text
+                    profileNameEl.innerHTML = userProfile.name;
+                    universityEl.innerHTML = userProfile.university;
+                    majorEl.innerHTML = userProfile.major;
+                    bioEl.innerHTML = userProfile.bio;
+                    
+                    editButton.textContent = 'Edit Profile';
+                    isEditMode = false;
+        
+                } else {
+                    // --- ENTER EDIT MODE ---
+                    profileNameEl.innerHTML = `<input id="input-name" class="w-full text-center text-2xl font-bold border rounded-md px-2 py-1" value="${userProfile.name}">`;
+                    universityEl.innerHTML = `<input id="input-university" class="w-full text-center text-sm border rounded-md px-2 py-1" value="${userProfile.university}">`;
+                    majorEl.innerHTML = `<input id="input-major" class="w-full text-center text-sm border rounded-md px-2 py-1 mt-1" value="${userProfile.major}">`;
+                    bioEl.innerHTML = `<textarea id="input-bio" class="w-full text-sm border rounded-md px-2 py-1 h-24">${userProfile.bio}</textarea>`;
+                    
+                    editButton.textContent = 'Save Changes';
+                    isEditMode = true;
+                }
+            }
+        
+            // --- INITIAL PAGE POPULATION ---
+            function populateProfile() {
+                document.getElementById('profile-picture').src = userProfile.profilePictureUrl;
+                profileNameEl.textContent = userProfile.name;
+                universityEl.textContent = userProfile.university;
+                majorEl.textContent = userProfile.major;
+                bioEl.textContent = userProfile.bio;
+                
+                const reviewsContainer = document.getElementById('seller-reviews-container');
+                const avgRatingContainer = document.getElementById('stats-avg-rating');
+                if (sellerReviews.length > 0) {
+                    reviewsContainer.innerHTML = '';
+                    let totalRating = 0;
+                    sellerReviews.forEach(review => {
+                        totalRating += review.rating;
+                        const reviewEl = document.createElement('div');
+                        reviewEl.className = 'pt-4 border-t first:pt-0 first:border-t-0';
+                        reviewEl.innerHTML = `<div class="flex items-center mb-1">${createStarRating(review.rating)}<p class="ml-2 font-semibold text-gray-700">${review.user}</p></div><p class="text-gray-600 text-sm">${review.comment}</p>`;
+                        reviewsContainer.appendChild(reviewEl);
+                    });
+                    const avgRating = totalRating / sellerReviews.length;
+                    avgRatingContainer.innerHTML = createStarRating(avgRating);
+                } else {
+                    avgRatingContainer.innerHTML = `<span class="text-sm text-gray-500">No ratings yet</span>`;
+                }
+        
+                const listingsContainer = document.getElementById('active-listings-container');
+                const myProducts = allProducts.filter(product => product.seller === userProfile.name);
+                if (myProducts.length > 0) {
+                    listingsContainer.innerHTML = ''; 
+                    myProducts.forEach(item => {
+                        const itemEl = document.createElement('div');
+                        itemEl.className = 'flex items-center space-x-4 p-2 rounded-lg hover:bg-gray-50';
+                        itemEl.innerHTML = `<a href="product-details.html?id=${item.id}"><img src="${item.imageUrl}" alt="${item.name}" class="w-16 h-16 object-cover rounded-md"></a><div class="flex-grow"><a href="product-details.html?id=${item.id}" class="font-semibold text-gray-700 hover:text-indigo-600">${item.name}</a><p class="text-sm text-gray-500">$${item.price.toFixed(2)}</p></div><button class="text-xs text-indigo-600 hover:underline">Edit</button><button class="text-xs text-red-500 hover:underline">Delete</button>`;
+                        listingsContainer.appendChild(itemEl);
+                    });
+                }
+            }
+        
+            // --- RUN ON PAGE LOAD ---
+            populateProfile();
+            editButton.addEventListener('click', toggleEditMode);
+        
         });
+        </script>
 
-        window.addEventListener('click', (event) => {
-            const settingsMenu = document.getElementById('settings-menu');
-            const accessibilityMenu = document.getElementById('accessibility-menu');
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Function to apply the stored font size to the entire page
+            function applyTextSize(size) {
+                const newSize = size / 100;
+                document.body.style.fontSize = `${newSize}rem`;
+            }
             
-            if (settingsMenu && !settingsMenu.classList.contains('hidden') && !document.getElementById('settings-btn').contains(event.target)) {
-                settingsMenu.classList.add('hidden');
-            }
-
-            if (accessibilityMenu && !accessibilityMenu.classList.contains('hidden') && !document.getElementById('user-menu-btn').contains(event.target)) {
-                 accessibilityMenu.classList.add('hidden');
-            }
+            // Get the saved size from localStorage, default to 100 if not found
+            const savedSize = localStorage.getItem('collegifyTextSize') || 100;
+            
+            // Apply the size when the page loads
+            applyTextSize(savedSize);
         });
     </script>
+
+    <!-- Translate -->
+    <script src="script.js"></script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement (
+                {pageLanguage: 'en'},
+                'google_translate_element'
+            );
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>

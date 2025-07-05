@@ -119,9 +119,11 @@
                     </button>
                     <div id="settings-menu" class="hidden absolute bottom-full left-0 mb-2 min-w-[200px] bg-white border border-gray-200 rounded-lg shadow-lg z-10">
                         <a href="notifications.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Notifications</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Password Reset</a>
                         <a href="terms.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Terms & Conditions</a>
                     </div>
+                </li>
+                <li>
+                    <div id="google_translate_element"></div>
                 </li>
             </ul>
         </div>
@@ -144,11 +146,7 @@
                         </svg>
                     </button>
                     <div id="accessibility-menu" class="hidden absolute bottom-full right-0 mb-2 min-w-[220px] bg-white border border-gray-200 rounded-lg shadow-lg z-10">
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Display and text size</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Reader mode</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Audio description</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Zoom</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Translate</a>
+                        <a href="display-text.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Display and text size</a>
                     </div>
                 </div>
             </div>
@@ -261,5 +259,34 @@ ${comments}
             });
         });
     </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Function to apply the stored font size to the entire page
+            function applyTextSize(size) {
+                const newSize = size / 100;
+                document.body.style.fontSize = `${newSize}rem`;
+            }
+            
+            // Get the saved size from localStorage, default to 100 if not found
+            const savedSize = localStorage.getItem('collegifyTextSize') || 100;
+            
+            // Apply the size when the page loads
+            applyTextSize(savedSize);
+        });
+    </script>
+
+    <!-- Translate -->
+    <script src="script.js"></script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement (
+                {pageLanguage: 'en'},
+                'google_translate_element'
+            );
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 </html>

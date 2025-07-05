@@ -33,6 +33,7 @@
                 <a href="products.html" class="text-indigo-600 font-semibold">Products</a>
                 <a href="categories.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Categories</a>
                 <a href="about.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">About us</a>
+                <div id="google_translate_element"></div>
             </div>
             <a href="dashboard.html" class="bg-indigo-600 text-white font-semibold px-5 py-2 rounded-lg hover:bg-indigo-700 transition duration-300">Sign Up / Log In</a>
         </nav>
@@ -59,7 +60,7 @@
     
     <script>
         const allProducts = [
-             { id: 1, name: "Psychology 101 Textbook", price: 45.00, category: "Textbooks", imageUrl: "https://images.unsplash.com/photo-1544716278-e513176f20b5?auto=format&fit=crop&w=400&q=80" },
+            { id: 1, name: "Psychology 101 Textbook", price: 45.00, category: "Textbooks", imageUrl: "https://images.unsplash.com/photo-1544716278-e513176f20b5?auto=format&fit=crop&w=400&q=80" },
             { id: 2, name: "Mini Fridge", price: 80.00, category: "Furniture", imageUrl: "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=400&q=80" },
             { id: 3, name: "Adjustable Laptop Stand", price: 25.00, category: "Electronics", imageUrl: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=400&q=80" },
             { id: 4, name: "LED Desk Lamp", price: 15.00, category: "Dorm Decor", imageUrl: "https://images.unsplash.com/photo-1543508415-a690467a9d49?auto=format&fit=crop&w=400&q=80" },
@@ -123,5 +124,34 @@
             searchBar.addEventListener('input', filterProducts);
         });
     </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Function to apply the stored font size to the entire page
+            function applyTextSize(size) {
+                const newSize = size / 100;
+                document.body.style.fontSize = `${newSize}rem`;
+            }
+            
+            // Get the saved size from localStorage, default to 100 if not found
+            const savedSize = localStorage.getItem('collegifyTextSize') || 100;
+            
+            // Apply the size when the page loads
+            applyTextSize(savedSize);
+        });
+    </script>
+
+    <!-- Translate -->
+    <script src="script.js"></script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement (
+                {pageLanguage: 'en'},
+                'google_translate_element'
+            );
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 </html>

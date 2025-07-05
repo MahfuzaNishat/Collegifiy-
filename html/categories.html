@@ -31,6 +31,7 @@
                 <a href="products.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Products</a>
                 <a href="categories.html" class="text-indigo-600 font-semibold">Categories</a>
                 <a href="about.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">About us</a>
+                <div id="google_translate_element"></div>
             </div>
             <a href="dashboard.html" class="bg-indigo-600 text-white font-semibold px-5 py-2 rounded-lg hover:bg-indigo-700 transition duration-300">Sign Up / Log In</a>
         </nav>
@@ -74,6 +75,33 @@
             }
         });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Function to apply the stored font size to the entire page
+            function applyTextSize(size) {
+                const newSize = size / 100;
+                document.body.style.fontSize = `${newSize}rem`;
+            }
+            
+            // Get the saved size from localStorage, default to 100 if not found
+            const savedSize = localStorage.getItem('collegifyTextSize') || 100;
+            
+            // Apply the size when the page loads
+            applyTextSize(savedSize);
+        });
+    </script>
+
+    <!-- Translate -->
+    <script src="script.js"></script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement (
+                {pageLanguage: 'en'},
+                'google_translate_element'
+            );
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>

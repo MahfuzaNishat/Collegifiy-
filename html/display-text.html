@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Communications Preferences - Collegify+</title>
+    <title>Display and Text Size - Collegify+</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
-        .toggle-checkbox:checked + .toggle-label { background-color: #4f46e5; }
-        .toggle-checkbox:checked + .toggle-label .toggle-dot { transform: translateX(100%); }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
     </style>
 </head>
 
@@ -151,139 +152,43 @@
     <!-- Main Content -->
     <main class="flex-grow p-10 overflow-y-auto">
         <div class="max-w-4xl mx-auto">
-            <h1 class="text-3xl font-bold text-gray-900 mb-6">Communications Preferences</h1>
-            <div class="bg-indigo-100 border-l-4 border-indigo-500 text-indigo-700 p-4 rounded-md mb-8" role="alert">
-                <p class="font-bold">We're taking a different approach to privacy</p><p>You have control. You can manage your preferences here at any time.</p>
-            </div>
-            <div class="bg-white p-6 rounded-lg shadow-sm border">
-                <h2 class="text-xl font-semibold mb-4">Manage Your Preferences</h2>
-                <p class="text-gray-600 mb-4">Let us know the topics you are interested in and how you want to be contacted.</p>
-                <div class="mb-6">
-                    <label class="block text-sm font-medium text-gray-700">Email Address</label>
-                    <div class="flex items-center gap-4 mt-1">
-                        <p class="text-gray-900">student.email@university.edu</p>
-                        <a href="#" class="text-sm text-indigo-600 hover:underline">Not you?</a>
-                    </div>
-                </div>
-                <div class="border-t pt-6 mb-6">
-                    <label for="subscribe-all-toggle" class="flex items-center justify-between cursor-pointer">
-                        <span class="font-medium text-gray-700">Subscribe to all communications</span>
-                        <div class="relative">
-                            <input type="checkbox" id="subscribe-all-toggle" class="sr-only toggle-checkbox">
-                            <div class="toggle-label block bg-gray-200 w-12 h-7 rounded-full transition-colors"></div>
-                        <div class="toggle-dot absolute left-1 top-1 bg-white w-5 h-5 rounded-full shadow transition-transform"></div>
-                        </div>
-                    </label>
-                </div>
-                <div class="mb-8">
-                    <h3 class="text-lg font-semibold text-gray-800">Marketing</h3>
-                    <p class="text-gray-500 mb-4">Keep up to date with your favorite Collegify+ news, events, and product releases!</p>
-                    <div class="space-y-3">
-                        <div class="flex items-center">
-                            <input id="events-check" type="checkbox" class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
-                            <label for="events-check" class="ml-3 block text-sm text-gray-700">Events and Resources</label>
-                        </div>
-                        <div class="flex items-center">
-                            <input id="news-check" type="checkbox" class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
-                            <label for="news-check" class="ml-3 block text-sm text-gray-700">Newsletters and Thought Leadership</label>
-                        </div>
-                        <div class="flex items-center">
-                            <input id="prod-edu-check" type="checkbox" class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500" checked>
-                            <label for="prod-edu-check" class="ml-3 block text-sm text-gray-700">Product Education</label>
-                        </div>
-                        <div class="flex items-center">
-                            <input id="prod-updates-check" type="checkbox" class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500" checked>
-                            <label for="prod-updates-check" class="ml-3 block text-sm text-gray-700">Product Updates</label>
-                        </div>
-                    </div>
-                </div>
+            <h1 class="text-3xl font-bold text-gray-900 mb-6">Display & Text Size</h1>
+            <div class="bg-white p-8 rounded-lg shadow-sm border space-y-8">
                 <div>
-                    <h3 class="text-lg font-semibold text-gray-800">Sales</h3>
-                    <p class="text-gray-500 mb-4">Let us know how you want to be contacted by Sales!</p>
-                    <div class="space-y-3">
-                        <div class="flex items-center">
-                            <input id="offers-check" type="checkbox" class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
-                            <label for="offers-check" class="ml-3 block text-sm text-gray-700">Special Offers and Promotions</label>
-                        </div>
+                    <label for="text-size-slider" class="block text-lg font-medium text-gray-700">Text Size</label>
+                    <p class="text-sm text-gray-500 mb-4">Adjust the text size to what's most comfortable for you.</p>
+                    <input id="text-size-slider" type="range" min="80" max="120" value="100" class="w-full">
+                    <div id="text-size-preview" class="mt-4 p-4 border rounded-lg bg-gray-50" style="font-size: 1rem;">
+                        This is a preview of the text size.
                     </div>
-                </div>
-                <div class="flex justify-end gap-4 mt-8 border-t pt-6">
-                    <button type="button" class="px-4 py-2 bg-white border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">Reset changes</button>
-                    <button type="submit" class="px-4 py-2 bg-indigo-600 border border-transparent rounded-md text-sm font-medium text-white hover:bg-indigo-700">Save Changes</button>
                 </div>
             </div>
         </div>
     </main>
 
     <script>
-        // --- DATA & LOCAL STORAGE FUNCTIONS ---
-        function getCart() { return JSON.parse(localStorage.getItem('campusCart')) || []; }
-        function getWishlist() { return JSON.parse(localStorage.getItem('campusWishlist')) || []; }
-
-        function updateBadge(id, getItems, reduceFn) {
-            const badge = document.getElementById(id);
-            if (badge) {
-                const items = getItems();
-                const count = items.reduce(reduceFn, 0);
-                badge.textContent = count;
-                badge.classList.toggle('hidden', count === 0);
-            }
-        }
-        function updateCartBadge() { updateBadge('cart-count-badge', getCart, (sum, item) => sum + item.quantity); }
-        function updateWishlistBadge() { updateBadge('wishlist-count-badge', getWishlist, (sum, item) => sum + 1); }
-
-        // --- PAGE INITIALIZATION & EVENT LISTENERS ---
         document.addEventListener('DOMContentLoaded', () => {
-            const settingsBtn = document.getElementById('settings-btn');
-            const settingsMenu = document.getElementById('settings-menu');
-            const userMenuBtn = document.getElementById('user-menu-btn');
-            const accessibilityMenu = document.getElementById('accessibility-menu');
+            const slider = document.getElementById('text-size-slider');
+            const preview = document.getElementById('text-size-preview');
+            const body = document.body;
 
-            if (settingsBtn) {
-                settingsBtn.addEventListener('click', (event) => {
-                    event.stopPropagation();
-                    settingsMenu.classList.toggle('hidden');
-                });
-            }
-
-            if (userMenuBtn) {
-                userMenuBtn.addEventListener('click', (event) => {
-                    event.stopPropagation();
-                    accessibilityMenu.classList.toggle('hidden');
-                });
-            }
-            
-            // Initial badge updates
-            updateCartBadge();
-            updateWishlistBadge();
-        });
-
-        window.addEventListener('click', (event) => {
-            const settingsMenu = document.getElementById('settings-menu');
-            const accessibilityMenu = document.getElementById('accessibility-menu');
-            
-            if (settingsMenu && !settingsMenu.classList.contains('hidden') && !document.getElementById('settings-btn').contains(event.target)) {
-                settingsMenu.classList.add('hidden');
-            }
-
-            if (accessibilityMenu && !accessibilityMenu.classList.contains('hidden') && !document.getElementById('user-menu-btn').contains(event.target)) {
-                 accessibilityMenu.classList.add('hidden');
-            }
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Function to apply the stored font size to the entire page
             function applyTextSize(size) {
                 const newSize = size / 100;
-                document.body.style.fontSize = `${newSize}rem`;
+                body.style.fontSize = `${newSize}rem`;
+                if(preview) {
+                    preview.style.fontSize = `${newSize}rem`;
+                }
             }
             
-            // Get the saved size from localStorage, default to 100 if not found
             const savedSize = localStorage.getItem('collegifyTextSize') || 100;
-            
-            // Apply the size when the page loads
+            slider.value = savedSize;
             applyTextSize(savedSize);
+            
+            slider.addEventListener('input', (e) => {
+                const newSizeValue = e.target.value;
+                applyTextSize(newSizeValue);
+                localStorage.setItem('collegifyTextSize', newSizeValue);
+            });
         });
     </script>
 

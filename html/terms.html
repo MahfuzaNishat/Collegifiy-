@@ -122,32 +122,39 @@
                     </button>
                     <div id="settings-menu" class="hidden absolute bottom-full left-0 mb-2 min-w-[200px] bg-white border border-gray-200 rounded-lg shadow-lg z-10">
                         <a href="notifications.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Notifications</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Password Reset</a>
                         <a href="terms.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Terms & Conditions</a>
                     </div>
                 </li>
+                <li>
+                    <div id="google_translate_element"></div>
+                </li>
             </ul>
         </div>
-        <div class="border-t border-gray-200 mt-4 pt-4">
-            <div class="flex items-center w-full text-left">
-                <a href="profile.html" class="flex-grow flex items-center p-2 rounded-lg hover:bg-gray-100">
-                    <span class="inline-block h-8 w-8 rounded-full overflow-hidden bg-gray-100">
-                        <svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M24 20.993V24H0v-2.997A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-                        </svg>
-                    </span>
-                    <span class="ml-3 font-medium text-gray-800">Student</span>
-                </a>
-                <div class="relative">
-                    <button id="user-menu-btn" class="p-2 rounded-lg hover:bg-gray-100">
-                        <svg class="w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
-                        </svg>
-                    </button>
+
+        <!-- User Profile / Accessibility Footer -->
+       <div class="border-t border-gray-200 mt-4 pt-4">
+        <div class="flex items-center w-full text-left">
+            <a href="profile.html" class="flex-grow flex items-center p-2 rounded-lg hover:bg-gray-100">
+                <span class="inline-block h-8 w-8 rounded-full overflow-hidden bg-gray-100">
+                    <svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 20.993V24H0v-2.997A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                </span>
+                <span class="ml-3 font-medium text-gray-800">Student</span>
+            </a>
+            <div class="relative">
+                <button id="user-menu-btn" class="p-2 rounded-lg hover:bg-gray-100">
+                    <svg class="w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+                    </svg>
+                </button>
+                <div id="accessibility-menu" class="hidden absolute bottom-full right-0 mb-2 min-w-[220px] bg-white border border-gray-200 rounded-lg shadow-lg z-10">
+                    <a href="display-text.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Display and text size</a>
                 </div>
             </div>
         </div>
-    </aside>
+    </div>
+</aside>
 
     <!-- Main Content -->
     <main class="flex-grow p-10 overflow-y-auto">
@@ -179,6 +186,34 @@
             </div>
         </div>
     </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Function to apply the stored font size to the entire page
+            function applyTextSize(size) {
+                const newSize = size / 100;
+                document.body.style.fontSize = `${newSize}rem`;
+            }
+            
+            // Get the saved size from localStorage, default to 100 if not found
+            const savedSize = localStorage.getItem('collegifyTextSize') || 100;
+            
+            // Apply the size when the page loads
+            applyTextSize(savedSize);
+        });
+    </script>
+
+    <!-- Translate -->
+    <script src="script.js"></script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement (
+                {pageLanguage: 'en'},
+                'google_translate_element'
+            );
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
