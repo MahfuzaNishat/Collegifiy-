@@ -7,26 +7,6 @@
     <title>Dashboard - Collegify+</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Firebase SDKs -->
-<!-- Firebase Compat SDKs (supports firebase.auth() style) -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-
-
-<script>
-  const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_DOMAIN",
-    databaseURL: "YOUR_DB_URL",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_BUCKET",
-    messagingSenderId: "YOUR_MSG_ID",
-    appId: "YOUR_APP_ID"
-  };
-  firebase.initializeApp(firebaseConfig);
-</script>
-
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -135,7 +115,8 @@
                     </button>
                     <div id="settings-menu" class="hidden absolute bottom-full left-0 mb-2 min-w-[200px] bg-white border border-gray-200 rounded-lg shadow-lg z-10">
                         <a href="notifications.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Notifications</a>
-                        <a href="/html/terms.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Terms & Conditions</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Password Reset</a>
+                        <a href="terms.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Terms & Conditions</a>
                     </div>
                 </li>
             </ul>
@@ -150,8 +131,7 @@
                             <path d="M24 20.993V24H0v-2.997A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
                         </svg>
                     </span>
-                    <span id="user-name" class="ml-3 font-medium text-gray-800">student</span>
-
+                    <span class="ml-3 font-medium text-gray-800">Student</span>
                 </a>
                 <div class="relative">
                     <button id="user-menu-btn" class="p-2 rounded-lg hover:bg-gray-100">
@@ -366,31 +346,7 @@
                  userMenu.classList.add('hidden');
             }
         });
-        // --- FETCH & DISPLAY LOGGED-IN USER NAME ---
-        const auth = firebase.auth();
-const db = firebase.database();
-
-auth.onAuthStateChanged(user => {
-    if (user) {
-        const userId = user.uid;
-        db.ref('user/' + userId).once('value').then(snapshot => {
-            const userData = snapshot.val();
-            const firstName = userData.firstName || 'Student';
-
-            const nameSpan = document.getElementById('user-name');
-            if (nameSpan) nameSpan.textContent = firstName;
-
-            const greeting = document.querySelector('h1.text-3xl');
-            if (greeting) greeting.textContent = `Welcome back, ${firstName}!`;
-        }).catch(() => {
-            document.getElementById('user-name').textContent = 'Student';
-        });
-    } else {
-        document.getElementById('user-name').textContent = 'Guest';
-    }
-});
-
     </script>
-    
+
 </body>
 </html>

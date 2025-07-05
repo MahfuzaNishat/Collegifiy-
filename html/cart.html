@@ -20,7 +20,7 @@
     <!-- Vertical Sidebar -->
     <aside class="w-64 bg-white text-gray-800 flex flex-col p-4 border-r border-gray-200">
 
-        <!-- Logo/Company Name -->
+        <!-- Company Name -->
         <div class="mb-8">
             <a href="index.html" class="text-2xl font-bold text-gray-900">Collegify+</a>
         </div>
@@ -41,13 +41,32 @@
                 <li class="mb-2">
                     <a href="dashboard.html" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100">
                         <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg><span class="ml-3">Home</span></a></li>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                        </svg>
+                        <span class="ml-3">Home</span>
+                    </a>
+                </li>
                 <li class="mb-2">
                     <a href="categories.html" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100">
                             <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
                         <span class="ml-3">Categories</span>
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a href="orders.html" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100">
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                        </svg>
+                        <span class="ml-3">My Orders</span></a>
+                    </li>
+                <li class="mb-2">
+                    <a href="messages.html" class="flex items-center p-2 text-base font-normal text-white bg-indigo-600 rounded-lg">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                        </svg>
+                        <span class="ml-3">Messages</span>
                     </a>
                 </li>
             </ul>
@@ -94,7 +113,7 @@
                     <div id="settings-menu" class="hidden absolute bottom-full left-0 mb-2 min-w-[200px] bg-white border border-gray-200 rounded-lg shadow-lg z-10">
                         <a href="notifications.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Notifications</a>
                         <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Password Reset</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Terms & Conditions</a>
+                        <a href="terms.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Terms & Conditions</a>
                     </div>
                 </li>
             </ul>
@@ -133,6 +152,7 @@
     <main class="flex-grow p-10 overflow-y-auto">
         <h1 class="text-3xl font-bold text-gray-900 mb-6">Shopping Cart</h1>
         <div id="cart-container" class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+
             <!-- Cart Items List -->
             <div id="cart-items-container" class="lg:col-span-2 bg-white p-6 rounded-lg shadow-sm border space-y-4"></div>
 
@@ -153,10 +173,11 @@
                     <span>Total</span>
                     <span id="total">$0.00</span>
                 </div>
-                <button  id="checkout-btn" class="mt-6 w-full bg-indigo-600 text-white font-semibold py-3 rounded-lg hover:bg-indigo-700 transition duration-300">Proceed to Checkout</button>
-               
+                <button class="mt-6 w-full bg-indigo-600 text-white font-semibold py-3 rounded-lg hover:bg-indigo-700 transition duration-300">Proceed to Checkout</button>
             </div>
         </div>
+
+        <!-- Empty Cart Message -->
         <div id="empty-cart-message" class="hidden text-center py-16">
             <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
@@ -169,41 +190,7 @@
         </div>
     </main>
 
-    <script src="https://js.stripe.com/v3/"></script>
     <script>
-      const stripe = Stripe("pk_test_51RgMwVPYzG2etZz4Jqac3epXwlljAMJqKHYQEFzf78pp0HKRRp4uQPP7ixy6WW5lSWcIrqQrbW49eSZOisDzVHqf00WO2NMxi2");
-    
-      document.getElementById("checkout-btn").addEventListener("click", async () => {
-        const cart = JSON.parse(localStorage.getItem("campusCart")) || [];
-    
-        if (cart.length === 0) {
-          alert("Your cart is empty.");
-          return;
-        }
-    
-        const response = await fetch("http://localhost:4242/create-checkout-session", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            items: cart.map(item => ({
-              name: item.name,
-              price: item.price,
-              quantity: item.quantity,
-            })),
-          }),
-        });
-    
-        const session = await response.json();
-window.location.href = session.url;
-
-      });
-    </script>
-    
-      
-      
-      <script>
         function getCart() { return JSON.parse(localStorage.getItem('campusCart')) || []; }
         function saveCart(cart) { localStorage.setItem('campusCart', JSON.stringify(cart)); renderCart(); }
         function getWishlist() { return JSON.parse(localStorage.getItem('campusWishlist')) || []; }
