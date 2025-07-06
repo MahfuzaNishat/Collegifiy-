@@ -112,7 +112,12 @@
                     </button>
                     <div id="settings-menu" class="hidden absolute bottom-full left-0 mb-2 min-w-[200px] bg-white border border-gray-200 rounded-lg shadow-lg z-10">
                         <a href="notifications.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Notifications</a>
+<<<<<<< HEAD
                         <a href="terms.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Terms & Conditions</a>
+=======
+                        
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Terms & Conditions</a>
+>>>>>>> ff133a7 (final commit)
                     </div>
                 </li>
                 <li>
@@ -187,8 +192,61 @@
             </div>
         </div>
     </main>
+<<<<<<< HEAD
 
     <script>
+=======
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <script>
+        const stripe = Stripe("pk_test_51RgMwVPYzG2etZz4Jqac3epXwlljAMJqKHYQEFzf78pp0HKRRp4uQPP7ixy6WW5lSWcIrqQrbW49eSZOisDzVHqf00WO2NMxi2");
+      
+        document.getElementById("checkout-btn").addEventListener("click", async () => {
+          const cart = JSON.parse(localStorage.getItem("campusCart")) || [];
+      
+          if (cart.length === 0) {
+            alert("Your cart is empty.");
+            return;
+          }
+      
+          try {
+            const response = await fetch("http://127.0.0.1:4242/create-checkout-session", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                items: cart.map(item => ({
+                  name: item.name,
+                  price: item.price,
+                  quantity: item.quantity,
+                })),
+              }),
+            });
+      
+            const session = await response.json();
+            console.log("Stripe session response:", session); // ✅ Debug log
+      
+            if (!session.url) {
+              alert("Something went wrong. session.url is undefined.");
+              return;
+            }
+      
+            // ✅ Redirect to Stripe
+            window.location.href = session.url;
+      
+          } catch (error) {
+            console.error("Error during Stripe checkout:", error);
+            alert("Checkout failed. See console for details.");
+          }
+        });
+      </script>
+      
+    
+      
+      
+      <script>
+>>>>>>> ff133a7 (final commit)
         function getCart() { return JSON.parse(localStorage.getItem('campusCart')) || []; }
         function saveCart(cart) { localStorage.setItem('campusCart', JSON.stringify(cart)); renderCart(); }
         function getWishlist() { return JSON.parse(localStorage.getItem('campusWishlist')) || []; }

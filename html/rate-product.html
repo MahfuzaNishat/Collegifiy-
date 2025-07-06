@@ -154,7 +154,9 @@
     <!-- Main Content -->
     <main class="flex-grow p-10 overflow-y-auto">
         <div class="max-w-2xl mx-auto">
+            <div id="google_translate_element"></div>
             <h1 class="text-3xl font-bold text-gray-900 mb-6">Rate Product</h1>
+            
             <div class="bg-white p-8 rounded-lg shadow-sm border mb-8">
                 <div class="flex items-center space-x-4 mb-6">
                     <img src="https://images.unsplash.com/photo-1544716278-e513176f20b5?auto=format&fit=crop&w=100&q=80" alt="Product Image" class="w-20 h-20 object-cover rounded-lg">
@@ -261,6 +263,34 @@
             }
         });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Function to apply the stored font size to the entire page
+            function applyTextSize(size) {
+                const newSize = size / 100;
+                document.body.style.fontSize = `${newSize}rem`;
+            }
+            
+            // Get the saved size from localStorage, default to 100 if not found
+            const savedSize = localStorage.getItem('collegifyTextSize') || 100;
+            
+            // Apply the size when the page loads
+            applyTextSize(savedSize);
+        });
+    </script>
+
+    <!-- Translate -->
+    <script src="script.js"></script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement (
+                {pageLanguage: 'en'},
+                'google_translate_element'
+            );
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {

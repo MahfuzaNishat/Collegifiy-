@@ -152,6 +152,7 @@
     <main class="flex-grow p-10 overflow-y-auto">
         <div class="max-w-4xl mx-auto">
             <h1 class="text-3xl font-bold text-gray-900 mb-6">Communications Preferences</h1>
+            <div id="google_translate_element"></div>
             <div class="bg-indigo-100 border-l-4 border-indigo-500 text-indigo-700 p-4 rounded-md mb-8" role="alert">
                 <p class="font-bold">We're taking a different approach to privacy</p><p>You have control. You can manage your preferences here at any time.</p>
             </div>
@@ -213,13 +214,14 @@
                 </div>
             </div>
         </div>
+      
     </main>
 
     <script>
         // --- DATA & LOCAL STORAGE FUNCTIONS ---
         function getCart() { return JSON.parse(localStorage.getItem('campusCart')) || []; }
         function getWishlist() { return JSON.parse(localStorage.getItem('campusWishlist')) || []; }
-
+    
         function updateBadge(id, getItems, reduceFn) {
             const badge = document.getElementById(id);
             if (badge) {
@@ -229,48 +231,79 @@
                 badge.classList.toggle('hidden', count === 0);
             }
         }
-        function updateCartBadge() { updateBadge('cart-count-badge', getCart, (sum, item) => sum + item.quantity); }
-        function updateWishlistBadge() { updateBadge('wishlist-count-badge', getWishlist, (sum, item) => sum + 1); }
-
+    
+        function updateCartBadge() {
+            updateBadge('cart-count-badge', getCart, (sum, item) => sum + item.quantity);
+        }
+    
+        function updateWishlistBadge() {
+            updateBadge('wishlist-count-badge', getWishlist, (sum, item) => sum + 1);
+        }
+    
         // --- PAGE INITIALIZATION & EVENT LISTENERS ---
         document.addEventListener('DOMContentLoaded', () => {
             const settingsBtn = document.getElementById('settings-btn');
             const settingsMenu = document.getElementById('settings-menu');
             const userMenuBtn = document.getElementById('user-menu-btn');
             const accessibilityMenu = document.getElementById('accessibility-menu');
-
+            const slider = document.getElementById('text-size-slider');
+            const preview = document.getElementById('text-size-preview');
+            const body = document.body;
+    
             if (settingsBtn) {
                 settingsBtn.addEventListener('click', (event) => {
                     event.stopPropagation();
                     settingsMenu.classList.toggle('hidden');
                 });
             }
-
+    
             if (userMenuBtn) {
                 userMenuBtn.addEventListener('click', (event) => {
                     event.stopPropagation();
                     accessibilityMenu.classList.toggle('hidden');
                 });
             }
-            
+    
+            // --- TEXT SIZE HANDLING ---
+            function applyTextSize(size) {
+                const newSize = size / 100;
+                body.style.fontSize = `${newSize}rem`;
+                if (preview) {
+                    preview.style.fontSize = `${newSize}rem`;
+                }
+            }
+    
+            const savedSize = localStorage.getItem('collegifyTextSize') || 100;
+            if (slider) {
+                slider.value = savedSize;
+                applyTextSize(savedSize);
+    
+                slider.addEventListener('input', (e) => {
+                    const newSizeValue = e.target.value;
+                    applyTextSize(newSizeValue);
+                    localStorage.setItem('collegifyTextSize', newSizeValue);
+                });
+            }
+    
             // Initial badge updates
             updateCartBadge();
             updateWishlistBadge();
         });
-
+    
         window.addEventListener('click', (event) => {
             const settingsMenu = document.getElementById('settings-menu');
             const accessibilityMenu = document.getElementById('accessibility-menu');
-            
+    
             if (settingsMenu && !settingsMenu.classList.contains('hidden') && !document.getElementById('settings-btn').contains(event.target)) {
                 settingsMenu.classList.add('hidden');
             }
-
+    
             if (accessibilityMenu && !accessibilityMenu.classList.contains('hidden') && !document.getElementById('user-menu-btn').contains(event.target)) {
-                 accessibilityMenu.classList.add('hidden');
+                accessibilityMenu.classList.add('hidden');
             }
         });
     </script>
+<<<<<<< HEAD
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Function to apply the stored font size to the entire page
@@ -287,17 +320,30 @@
         });
     </script>
 
+=======
+    
+>>>>>>> ff133a7 (final commit)
     <!-- Translate -->
     <script src="script.js"></script>
     <script type="text/javascript">
         function googleTranslateElementInit() {
+<<<<<<< HEAD
             new google.translate.TranslateElement (
                 {pageLanguage: 'en'},
+=======
+            new google.translate.TranslateElement(
+                { pageLanguage: 'en' },
+>>>>>>> ff133a7 (final commit)
                 'google_translate_element'
             );
         }
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<<<<<<< HEAD
 
+=======
+    
+    
+>>>>>>> ff133a7 (final commit)
 </body>
 </html>

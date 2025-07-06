@@ -152,6 +152,7 @@
              <h3 class="mt-2 text-sm font-medium text-gray-900">No past orders</h3>
              <p class="mt-1 text-sm text-gray-500">Your purchase history will appear here.</p>
         </div>
+        <div id="google_translate_element"></div>
     </main>
 
     <script>
@@ -248,6 +249,34 @@
         
         document.addEventListener('DOMContentLoaded', renderOrders);
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Function to apply the stored font size to the entire page
+            function applyTextSize(size) {
+                const newSize = size / 100;
+                document.body.style.fontSize = `${newSize}rem`;
+            }
+            
+            // Get the saved size from localStorage, default to 100 if not found
+            const savedSize = localStorage.getItem('collegifyTextSize') || 100;
+            
+            // Apply the size when the page loads
+            applyTextSize(savedSize);
+        });
+    </script>
+
+    <!-- Translate -->
+    <script src="script.js"></script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement (
+                {pageLanguage: 'en'},
+                'google_translate_element'
+            );
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {

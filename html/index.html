@@ -43,6 +43,7 @@
     <!-- Main Content -->
     <main>
         <!-- Main Section -->
+        <div id="google_translate_element"></div>
         <section class="hero-section text-center py-20 md:py-32">
             <div class="container mx-auto px-6">
                 <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 mb-4">The Student Marketplace</h1>
@@ -204,15 +205,54 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // --- CATEGORY LINK REDIRECTION ---
             const categoryLinks = document.querySelectorAll('.category-link');
             categoryLinks.forEach(link => {
-                link.addEventListener('click', function(event) {
+                link.addEventListener('click', function (event) {
                     event.preventDefault();
                     window.location.href = this.href;
                 });
             });
+    
+            // --- TEXT SIZE SLIDER ---
+            const slider = document.getElementById('text-size-slider');
+            const preview = document.getElementById('text-size-preview');
+            const body = document.body;
+    
+            function applyTextSize(size) {
+                const newSize = size / 100;
+                body.style.fontSize = `${newSize}rem`;
+                if (preview) {
+                    preview.style.fontSize = `${newSize}rem`;
+                }
+            }
+    
+            const savedSize = localStorage.getItem('collegifyTextSize') || 100;
+            if (slider) {
+                slider.value = savedSize;
+                applyTextSize(savedSize);
+    
+                slider.addEventListener('input', (e) => {
+                    const newSizeValue = e.target.value;
+                    applyTextSize(newSizeValue);
+                    localStorage.setItem('collegifyTextSize', newSizeValue);
+                });
+            }
         });
     </script>
+    
+    <!-- Translate -->
+    <script src="script.js"></script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                { pageLanguage: 'en' },
+                'google_translate_element'
+            );
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    
 
     <!-- Text Size -->
     <script>

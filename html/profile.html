@@ -112,7 +112,12 @@
                     </button>
                     <div id="settings-menu" class="hidden absolute bottom-full left-0 mb-2 min-w-[200px] bg-white border border-gray-200 rounded-lg shadow-lg z-10">
                         <a href="notifications.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Notifications</a>
+<<<<<<< HEAD
                         <a href="terms.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Terms & Conditions</a>
+=======
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Password Reset</a>
+                        <a href="/html/terms.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Terms & Conditions</a>
+>>>>>>> ff133a7 (final commit)
                     </div>
                 </li>
                 <li>
@@ -120,6 +125,7 @@
                 </li>
             </ul>
         </div>
+        <div id="google_translate_element"></div>
         
         <!-- User Profile / Accessibility Footer -->
         <div class="border-t border-gray-200 mt-4 pt-4">
@@ -336,6 +342,24 @@
             applyTextSize(savedSize);
         });
     </script>
+<<<<<<< HEAD
+=======
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Function to apply the stored font size to the entire page
+            function applyTextSize(size) {
+                const newSize = size / 100;
+                document.body.style.fontSize = `${newSize}rem`;
+            }
+            
+            // Get the saved size from localStorage, default to 100 if not found
+            const savedSize = localStorage.getItem('collegifyTextSize') || 100;
+            
+            // Apply the size when the page loads
+            applyTextSize(savedSize);
+        });
+    </script>
+>>>>>>> ff133a7 (final commit)
 
     <!-- Translate -->
     <script src="script.js"></script>
@@ -349,5 +373,9 @@
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
+<<<<<<< HEAD
+=======
+    
+>>>>>>> ff133a7 (final commit)
 </body>
 </html>

@@ -40,11 +40,10 @@
     <!-- Main Content -->
     <main class="container mx-auto px-6 py-12">
         <h1 class="text-4xl font-extrabold text-gray-900 mb-8">Browse by Category</h1>
-
+        <div id="google_translate_element"></div>
         <!-- Category Grid -->
         <div id="category-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"></div>
     </main>
-    
     <script>
         const categories = [
             { name: "Textbooks", imageUrl: "https://images.unsplash.com/photo-1544716278-e513176f20b5?auto=format&fit=crop&w=400&q=80" },
@@ -56,10 +55,10 @@
             { name: "Bikes & Scooters", imageUrl: "https://images.unsplash.com/photo-1579547616650-9c2138a0f96d?auto=format&fit=crop&w=400&q=80" },
             { name: "Art Supplies", imageUrl: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=400&q=80" }
         ];
-
+    
         document.addEventListener('DOMContentLoaded', () => {
             const categoryGrid = document.getElementById('category-grid');
-
+    
             if (categoryGrid) {
                 categories.forEach(category => {
                     const card = `
@@ -73,8 +72,34 @@
                     categoryGrid.innerHTML += card;
                 });
             }
+    
+            // Text size settings
+            const slider = document.getElementById('text-size-slider');
+            const preview = document.getElementById('text-size-preview');
+            const body = document.body;
+    
+            function applyTextSize(size) {
+                const newSize = size / 100;
+                body.style.fontSize = `${newSize}rem`;
+                if (preview) {
+                    preview.style.fontSize = `${newSize}rem`;
+                }
+            }
+    
+            const savedSize = localStorage.getItem('collegifyTextSize') || 100;
+            if (slider) {
+                slider.value = savedSize;
+                applyTextSize(savedSize);
+    
+                slider.addEventListener('input', (e) => {
+                    const newSizeValue = e.target.value;
+                    applyTextSize(newSizeValue);
+                    localStorage.setItem('collegifyTextSize', newSizeValue);
+                });
+            }
         });
     </script>
+<<<<<<< HEAD
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Function to apply the stored font size to the entire page
@@ -91,17 +116,30 @@
         });
     </script>
 
+=======
+    
+>>>>>>> ff133a7 (final commit)
     <!-- Translate -->
     <script src="script.js"></script>
     <script type="text/javascript">
         function googleTranslateElementInit() {
+<<<<<<< HEAD
             new google.translate.TranslateElement (
                 {pageLanguage: 'en'},
+=======
+            new google.translate.TranslateElement(
+                { pageLanguage: 'en' },
+>>>>>>> ff133a7 (final commit)
                 'google_translate_element'
             );
         }
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<<<<<<< HEAD
+=======
+    
+    
+>>>>>>> ff133a7 (final commit)
 
 </body>
 </html>
